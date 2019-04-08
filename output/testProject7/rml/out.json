@@ -1,0 +1,45 @@
+[
+  {
+    "@type": "http://schema.org/Student",
+    "http://schema.org/name": "David Moreno",
+    "http://schema.org/email": "david@email.com",
+    "http://schema.org/age": "21",
+    "@id": "http://sti2.at/#ALUMNOmapping_1",
+    "http://schema.org/registration": [
+      {
+        "@id": "http://sti2.at/#ASIGNATURAmapping_1"
+      },
+      {
+        "@id": "http://sti2.at/#ASIGNATURAmapping_2"
+      }
+    ]
+  },
+  {
+    "@type": "http://schema.org/Student",
+    "http://schema.org/name": "Álvaro Sainz del Nogal",
+    "http://schema.org/age": "21",
+    "@id": "http://sti2.at/#ALUMNOmapping_2",
+    "http://schema.org/registration": {
+      "@id": "http://sti2.at/#ASIGNATURAmapping_3"
+    }
+  },
+  {
+    "@type": "http://schema.org/Course",
+    "http://schema.org/name": "Web semántica y Linked data",
+    "http://schema.org/credit": "3",
+    "@id": "http://sti2.at/#ASIGNATURAmapping_1"
+  },
+  {
+    "@type": "http://schema.org/Course",
+    "http://schema.org/name": "Sistemas dinámicos, caos y fractales",
+    "http://schema.org/credit": "6",
+    "http://schema.org/department": "DMA",
+    "@id": "http://sti2.at/#ASIGNATURAmapping_2"
+  },
+  {
+    "@type": "http://schema.org/Course",
+    "http://schema.org/name": "Inteligencia Artificial",
+    "http://schema.org/credit": "6",
+    "@id": "http://sti2.at/#ASIGNATURAmapping_3"
+  }
+]
