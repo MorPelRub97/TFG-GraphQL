@@ -3,11 +3,14 @@
     "nombre": "David Moreno",
     "edad": "21",
     "email": "david@email.com",
-    "telefono": "647714374"
+    "telefono": "647714374",
+    "creditos": "30.5"
   },
   {
     "nombre": "Álvaro Sainz del Nogal",
     "edad": "21",
-    "email": "alvaro@email.com"
+    "email": "alvaro@email.com",
+    "repetidor": "false",
+    "creditos": "27.5"
   }
 ]

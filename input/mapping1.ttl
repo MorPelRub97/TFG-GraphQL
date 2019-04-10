@@ -37,4 +37,14 @@ rr:predicateObjectMap [
 rr:predicateObjectMap [
     rr:predicate schema:phone;
     rr:objectMap [ rml:reference "telefono" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:repetidor;
+    rr:objectMap [ rml:reference "repetidor" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:credits;
+    rr:objectMap [ rml:reference "creditos" ];
 ].

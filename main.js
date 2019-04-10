@@ -7,19 +7,19 @@ import * as rmlParser from './RML-Mapper2/index.js';
 import * as converter from "./JSONtoArray.js";
 const mkdirp = require('mkdirp');
 
-mkdirp('/home/david/Escritorio/TFG-GraphQL/output/testProject8/rml', function(err) {});
+mkdirp('/home/david/Escritorio/TFG-GraphQL/output/testProject9/rml', function(err) {});
 
 let options={
 };
 
-let result = rmlParser.parseFile('./input/mapping1.ttl', './output/testProject8/rml/out.json',options).
+let result = rmlParser.parseFile('./input/mapping1.ttl', './output/testProject9/rml/out.json',options).
 catch((err) => {
     console.log(err);
 });
 
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
-  var fileJSON = converter.convertJSONtoArray('./output/testProject8/rml/out.json');
+  var fileJSON = converter.convertJSONtoArray('./output/testProject9/rml/out.json');
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
             + "const {\n"
             + "\tMongoIdType,\n"
@@ -60,11 +60,11 @@ result.then(() => {
            + "};\n\n";
   }
 
-  fs.writeFile('/home/david/Escritorio/TFG-GraphQL/output/testProject8/projectSetup.js', texto, function(err) {});
+  fs.writeFile('/home/david/Escritorio/TFG-GraphQL/output/testProject9/projectSetup.js', texto, function(err) {});
 
   /*El projectSetup se ha creado, llamamos a mongo-graphql-starter*/
   import('./output/testProject8/projectSetup.js').then((ProjectSetup) => {
-       createGraphqlSchema(ProjectSetup, path.resolve("./output/testProject8")).then(() => {
+       createGraphqlSchema(ProjectSetup, path.resolve("./output/testProject9")).then(() => {
          console.log('GraphQL resolvers generados con éxito');
        });
   });

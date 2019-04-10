@@ -1,8 +1,16 @@
 var fs = require('file-system');
 var _ = require('lodash');
 
+function isNumeric(num){
+  return !isNaN(num);
+}
+
+function isInt(n) {
+   return n % 1 === 0;
+}
+
 function convertJSONtoArray(input){
-//var jsonfile = fs.readFileSync('./output/testProject6/rml/out.json','utf8')
+//var jsonfile = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
 var jsonfile = fs.readFileSync(input,'utf8')
 
 var objArr = JSON.parse(jsonfile);
@@ -18,10 +26,17 @@ for (i = 0; i < tamObjArr; i++) {
   valueArr.push(Object.values(objArr[i]));
 };
 
-/*Inicializamos nombre de las tablas (siempre es el primer elemento de los values, el @type)*/
+/*Inicializamos nombre de las tablas (la tabla siempre es el primer elemento de los values, el @type)*/
 var arrayTablas = [];
+
+var arrTypesAux = valueArr;
+var arrTypes = [];
+
 for(var k in valueArr){
  arrayTablas.push(valueArr[k][0]);
+ arrTypesAux[k].shift();
+ arrTypesAux[k].pop();
+ arrTypes.push(valueArr[k]);
 }
 
 /*Eliminamos el prefix y nos quedamos solo con el nombre de la tabla*/
@@ -31,6 +46,33 @@ for (var k in arrayTablas){
   arrAux = arrayTablas[k].split("/");
   arrayTablas[k] = arrAux[arrAux.length-1];
 }
+
+/*Inicializamos los dataTypes de los atributos*/
+for(var k in arrTypes){
+  for(var x in arrTypes[k]){
+    if(isNumeric(arrTypes[k][x])){//Numero, aun no se sabe si float o int
+      if(isInt(arrTypes[k][x])){
+        console.log(arrTypes[k][x] + ' es un int');
+        arrTypes[k][x] = "IntType";
+      }
+      else{
+        console.log(arrTypes[k][x] + ' es un float');
+        arrTypes[k][x] = "FloatType";
+      }
+    }
+    else{//String, no se sabe si es string, boolean, date...
+      if(arrTypes[k][x] == "true" || arrTypes[k][x] == "false"){
+        console.log(arrTypes[k][x] + ' es un booleano');
+        arrTypes[k][x] = "BoolType";
+      }
+      else{
+        console.log(arrTypes[k][x] + ' es un string');
+        arrTypes[k][x] = "StringType";
+      }
+    }
+  }
+}
+console.log(arrTypes);
 
 /*Inicializamos nombre de los atributos (elementos de las key desde 1 hasta n-1)*/
 var arrayAtributos = [];
