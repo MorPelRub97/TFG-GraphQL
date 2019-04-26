@@ -3,9 +3,9 @@ export const type = `
   type Student {
     _id: String
     name: String
-    age: String
     email: String
-    phone: String
+    age: String
+    relationshipField: [String]
   }
 
   type StudentQueryResults {
@@ -37,24 +37,30 @@ export const type = `
   input StudentInput {
     _id: String
     name: String
-    age: String
     email: String
-    phone: String
+    age: String
+    relationshipField: [String]
   }
 
   input StudentMutationInput {
     name: String
-    age: String
     email: String
-    phone: String
+    age: String
+    relationshipField: [String]
+    relationshipField_PUSH: String
+    relationshipField_CONCAT: [String]
+    relationshipField_UPDATE: StringArrayUpdate
+    relationshipField_UPDATES: [StringArrayUpdate]
+    relationshipField_PULL: [String]
+    relationshipField_ADDTOSET: [String]
   }
 
   input StudentSort {
     _id: Int
     name: Int
-    age: Int
     email: Int
-    phone: Int
+    age: Int
+    relationshipField: Int
   }
 
   input StudentFilters {
@@ -68,13 +74,6 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    age_contains: String
-    age_startsWith: String
-    age_endsWith: String
-    age_regex: String
-    age: String
-    age_ne: String
-    age_in: [String]
     email_contains: String
     email_startsWith: String
     email_endsWith: String
@@ -82,13 +81,23 @@ export const type = `
     email: String
     email_ne: String
     email_in: [String]
-    phone_contains: String
-    phone_startsWith: String
-    phone_endsWith: String
-    phone_regex: String
-    phone: String
-    phone_ne: String
-    phone_in: [String]
+    age_contains: String
+    age_startsWith: String
+    age_endsWith: String
+    age_regex: String
+    age: String
+    age_ne: String
+    age_in: [String]
+    relationshipField_count: Int
+    relationshipField_textContains: String
+    relationshipField_startsWith: String
+    relationshipField_endsWith: String
+    relationshipField_regex: String
+    relationshipField: [String]
+    relationshipField_in: [[String]]
+    relationshipField_contains: String
+    relationshipField_containsAny: [String]
+    relationshipField_ne: [String]
     OR: [StudentFilters]
   }
   
@@ -136,13 +145,6 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    age_contains: String,
-    age_startsWith: String,
-    age_endsWith: String,
-    age_regex: String,
-    age: String,
-    age_ne: String,
-    age_in: [String],
     email_contains: String,
     email_startsWith: String,
     email_endsWith: String,
@@ -150,13 +152,23 @@ export const query = `
     email: String,
     email_ne: String,
     email_in: [String],
-    phone_contains: String,
-    phone_startsWith: String,
-    phone_endsWith: String,
-    phone_regex: String,
-    phone: String,
-    phone_ne: String,
-    phone_in: [String],
+    age_contains: String,
+    age_startsWith: String,
+    age_endsWith: String,
+    age_regex: String,
+    age: String,
+    age_ne: String,
+    age_in: [String],
+    relationshipField_count: Int,
+    relationshipField_textContains: String,
+    relationshipField_startsWith: String,
+    relationshipField_endsWith: String,
+    relationshipField_regex: String,
+    relationshipField: [String],
+    relationshipField_in: [[String]],
+    relationshipField_contains: String,
+    relationshipField_containsAny: [String],
+    relationshipField_ne: [String],
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

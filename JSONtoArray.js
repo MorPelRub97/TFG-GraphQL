@@ -10,8 +10,8 @@ function isInt(n) {
 }
 
 function convertJSONtoArray(input){
-//var jsonfile = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
-var jsonfile = fs.readFileSync(input,'utf8')
+//var jsonfile = fs.readFileSync('./output/testProject8/rml/out.json','utf8');
+var jsonfile = fs.readFileSync(input,'utf8');
 
 var objArr = JSON.parse(jsonfile);
 var keyArr = [];
@@ -47,32 +47,6 @@ for (var k in arrayTablas){
   arrayTablas[k] = arrAux[arrAux.length-1];
 }
 
-/*Inicializamos los dataTypes de los atributos*/
-for(var k in arrTypes){
-  for(var x in arrTypes[k]){
-    if(isNumeric(arrTypes[k][x])){//Numero, aun no se sabe si float o int
-      if(isInt(arrTypes[k][x])){
-        console.log(arrTypes[k][x] + ' es un int');
-        arrTypes[k][x] = "IntType";
-      }
-      else{
-        console.log(arrTypes[k][x] + ' es un float');
-        arrTypes[k][x] = "FloatType";
-      }
-    }
-    else{//String, no se sabe si es string, boolean, date...
-      if(arrTypes[k][x] == "true" || arrTypes[k][x] == "false"){
-        console.log(arrTypes[k][x] + ' es un booleano');
-        arrTypes[k][x] = "BoolType";
-      }
-      else{
-        console.log(arrTypes[k][x] + ' es un string');
-        arrTypes[k][x] = "StringType";
-      }
-    }
-  }
-}
-console.log(arrTypes);
 
 /*Inicializamos nombre de los atributos (elementos de las key desde 1 hasta n-1)*/
 var arrayAtributos = [];
@@ -90,6 +64,36 @@ for (var k in arrayAtributos){
   arrAux = arrayAtributos[k][j].split("/");
   arrayAtributos[k][j] = arrAux[arrAux.length-1];
  }
+}
+
+/*Inicializamos los dataTypes de los atributos*/
+for(var k in arrTypes){
+  for(var x in arrTypes[k]){
+    if(isNumeric(arrTypes[k][x])){//Numero, aun no se sabe si float o int
+      if(isInt(arrTypes[k][x])){
+        arrTypes[k][x] = "IntType";
+      }
+      else{
+        arrTypes[k][x] = "FloatType";
+      }
+    }
+    else{//String, no se sabe si es string, boolean, date...
+      if(arrTypes[k][x] == "true" || arrTypes[k][x] == "false"){
+        arrTypes[k][x] = "BoolType";
+      }
+      else{
+        arrTypes[k][x] = "StringType";
+      }
+    }
+  }
+}
+
+var objTypes = {};
+
+for (var i in arrayAtributos){
+  for(var j in arrayAtributos[i]){
+    objTypes[arrayAtributos[i][j]] = arrTypes[i][j];
+  }
 }
 
 /*Ahora, el primer elemento de arrayTablas tiene los atributos del primer elemento de arrayAtributos */
@@ -129,7 +133,8 @@ if(iteraciones = 2 && (preResult[tamPreResult -1].nombreTabla != preResult[tamPr
 var result = resultNombreTablas.map(function(v, i) {
   return {
     nombreTabla: v,
-    atributos: resultAtributos[i]
+    atributos: resultAtributos[i],
+    dataTypes: objTypes
   };
 });
 

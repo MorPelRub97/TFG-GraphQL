@@ -6,6 +6,8 @@ export const type = `
     age: String
     email: String
     phone: String
+    credits: String
+    repetidor: String
   }
 
   type StudentQueryResults {
@@ -40,6 +42,8 @@ export const type = `
     age: String
     email: String
     phone: String
+    credits: String
+    repetidor: String
   }
 
   input StudentMutationInput {
@@ -47,6 +51,8 @@ export const type = `
     age: String
     email: String
     phone: String
+    credits: String
+    repetidor: String
   }
 
   input StudentSort {
@@ -55,6 +61,8 @@ export const type = `
     age: Int
     email: Int
     phone: Int
+    credits: Int
+    repetidor: Int
   }
 
   input StudentFilters {
@@ -89,6 +97,20 @@ export const type = `
     phone: String
     phone_ne: String
     phone_in: [String]
+    credits_contains: String
+    credits_startsWith: String
+    credits_endsWith: String
+    credits_regex: String
+    credits: String
+    credits_ne: String
+    credits_in: [String]
+    repetidor_contains: String
+    repetidor_startsWith: String
+    repetidor_endsWith: String
+    repetidor_regex: String
+    repetidor: String
+    repetidor_ne: String
+    repetidor_in: [String]
     OR: [StudentFilters]
   }
   
@@ -157,6 +179,20 @@ export const query = `
     phone: String,
     phone_ne: String,
     phone_in: [String],
+    credits_contains: String,
+    credits_startsWith: String,
+    credits_endsWith: String,
+    credits_regex: String,
+    credits: String,
+    credits_ne: String,
+    credits_in: [String],
+    repetidor_contains: String,
+    repetidor_startsWith: String,
+    repetidor_endsWith: String,
+    repetidor_regex: String,
+    repetidor: String,
+    repetidor_ne: String,
+    repetidor_in: [String],
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

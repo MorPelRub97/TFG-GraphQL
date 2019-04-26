@@ -1,3 +1,4 @@
+import { query as CourseQuery, mutation as CourseMutation, type as CourseType } from './Course/schema';
 import { query as StudentQuery, mutation as StudentMutation, type as StudentType } from './Student/schema';
     
 export default `
@@ -32,13 +33,19 @@ export default `
     value: Float
   }
 
+  ${CourseType}
+
   ${StudentType}
 
   type Query {
+    ${CourseQuery}
+
     ${StudentQuery}
   }
 
   type Mutation {
+    ${CourseMutation}
+
     ${StudentMutation}
   }
 

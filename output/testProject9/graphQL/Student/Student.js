@@ -4,9 +4,9 @@ export default {
   fields: {
     _id: "MongoId",
     name: "String",
-    age: "String",
     email: "String",
-    phone: "String"
+    age: "String",
+    relationshipField: "StringArray"
   },
   relationships: {
 

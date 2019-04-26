@@ -6,7 +6,9 @@ export default {
     name: "String",
     age: "String",
     email: "String",
-    phone: "String"
+    phone: "String",
+    credits: "String",
+    repetidor: "String"
   },
   relationships: {
 

@@ -9,12 +9,8 @@ const {
 	IntArrayType,
 	FloatType,
 	FloatArrayType,
-	DateType,
 	arrayOf,
 	ObjectOf,
-	formattedDate,
-	JSONType,
-	typeLiteral
 } = dataTypes;
 
 export const Student = {
@@ -24,7 +20,9 @@ export const Student = {
 		name: StringType,
 		age: StringType,
 		email: StringType,
-		phone: StringType
+		phone: StringType,
+		credits: StringType,
+		repetidor: StringType
 	}
 };
 

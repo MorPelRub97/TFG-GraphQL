@@ -9,12 +9,8 @@ const {
 	IntArrayType,
 	FloatType,
 	FloatArrayType,
-	DateType,
 	arrayOf,
 	ObjectOf,
-	formattedDate,
-	JSONType,
-	typeLiteral
 } = dataTypes;
 
 export const Student = {
@@ -22,11 +18,19 @@ export const Student = {
 	fields: {
 		_id: MongoIdType,
 		name: StringType,
-		age: StringType,
 		email: StringType,
-		phone: StringType,
-		credits: StringType,
-		repetidor: StringType
+		age: StringType,
+		relationshipField: StringArrayType
+	}
+};
+
+export const Course = {
+	table: "courses",
+	fields: {
+		_id: MongoIdType,
+		name: StringType,
+		credit: StringType,
+		department: StringType
 	}
 };
 
