@@ -18,19 +18,11 @@ export const Student = {
 	fields: {
 		_id: MongoIdType,
 		name: StringType,
-		email: StringType,
 		age: IntType,
-		relationshipField: StringArrayType
-	}
-};
-
-export const Course = {
-	table: "courses",
-	fields: {
-		_id: MongoIdType,
-		name: StringType,
-		credit: IntType,
-		department: StringType
+		email: StringType,
+		phone: IntType,
+		credits: FloatType,
+		repetidor: BoolType
 	}
 };
 

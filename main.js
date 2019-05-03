@@ -7,14 +7,15 @@ import * as rmlParser from './RML-Mapper2/index.js';
 import * as converter from "./JSONtoArray.js";
 const mkdirp = require('mkdirp');
 
-const testProject = "testProject9";
+const testProject = "testProject10";
 
 mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProject + '/rml', function(err) {});
 
 let options={
 };
 
-let result = rmlParser.parseFile('./input/newMapping.ttl', './output/' + testProject + '/rml/out.json',options).
+/*Llamamos a Rocket para parsear el mapping*/
+let result = rmlParser.parseFile('./input/mapping1.ttl', './output/' + testProject + '/rml/out.json',options).
 catch((err) => {
     console.log(err);
 });
@@ -22,6 +23,9 @@ catch((err) => {
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
   var fileJSON = converter.convertJSONtoArray('./output/' + testProject + '/rml/out.json');
+  var dataTypesObj = fileJSON[0].dataTypes;
+
+
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
             + "const {\n"
             + "\tMongoIdType,\n"
@@ -52,11 +56,23 @@ result.then(() => {
                  texto += "\t\t" + fileJSON[k].atributos[i] + ": StringArrayType\n";
                }
                else{
-                 texto += "\t\t" + fileJSON[k].atributos[i] + ": StringType\n";
+                 for (var property in dataTypesObj) {
+                   if (dataTypesObj.hasOwnProperty(property)) {
+                     if(property == fileJSON[k].atributos[i]){
+                       texto += "\t\t" + fileJSON[k].atributos[i] + ": " + dataTypesObj[property] + "\n";
+                     }
+                   }
+                 }
                }
              }
              else{
-               texto += "\t\t" + fileJSON[k].atributos[i] + ": StringType,\n";
+               for (var property in dataTypesObj) {
+                 if (dataTypesObj.hasOwnProperty(property)) {
+                   if(property == fileJSON[k].atributos[i]){
+                     texto += "\t\t" + fileJSON[k].atributos[i] + ": " + dataTypesObj[property] + ",\n";
+                   }
+                 }
+               }
              }
            }
     texto += "\t}\n"
@@ -65,7 +81,7 @@ result.then(() => {
 
   fs.writeFile('/home/david/Escritorio/TFG-GraphQL/output/' + testProject + '/projectSetup.js', texto, function(err) {});
 
-  /*El projectSetup se ha creado, llamamos a mongo-graphql-starter*/
+  /*El projectSetup se ha creado, llamamos a mongo-graphql-starter para crear los resolvers*/
   import('./output/' + testProject + '/projectSetup.js').then((ProjectSetup) => {
        createGraphqlSchema(ProjectSetup, path.resolve("./output/" + testProject)).then(() => {
          console.log('GraphQL resolvers generados con éxito');

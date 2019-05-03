@@ -10,7 +10,13 @@
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
     "email": "alvaro@email.com",
-    "repetidor": "false",
+    "repetidor": false,
     "creditos": 27.5
+  },
+  {
+    "nombre": "Freddy",
+    "edad": 21,
+    "email": "freddy@email.com"
   }
+
 ]
