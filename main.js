@@ -7,15 +7,18 @@ import * as rmlParser from './RML-Mapper2/index.js';
 import * as converter from "./JSONtoArray.js";
 const mkdirp = require('mkdirp');
 
-const testProject = "testProject10";
+function generateOutput(mappingPath, testProjectFolder){
+
+//const testProject = "testProject9";
+const testProject = testProjectFolder;
 
 mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProject + '/rml', function(err) {});
-
+//mkdirp('/home/david/Escritorio/output/' + testProject + '/rml', function(err) {});
 let options={
 };
 
 /*Llamamos a Rocket para parsear el mapping*/
-let result = rmlParser.parseFile('./input/mapping1.ttl', './output/' + testProject + '/rml/out.json',options).
+let result = rmlParser.parseFile(mappingPath, './output/' + testProject + '/rml/out.json',options).
 catch((err) => {
     console.log(err);
 });
@@ -88,3 +91,9 @@ result.then(() => {
        });
   });
 });
+}
+
+//generateOutput('/home/david/Escritorio/mapping1.ttl', 'testProject11');
+//generateOutput('./input/mapping1.ttl', 'testProject11');
+
+module.exports = { generateOutput };

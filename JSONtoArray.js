@@ -138,6 +138,7 @@ var result = resultNombreTablas.map(function(v, i) {
   };
 });
 
+console.log(result);
 return result;
 }
 

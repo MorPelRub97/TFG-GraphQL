@@ -5,7 +5,7 @@ import schema from "./output/testProject10/graphQL/schema.js";
 import { makeExecutableSchema } from "graphql-tools";
 import express from "express";
 
-const app = express();
+const app = express();//Se lanza la app
 
 const connString = "mongodb+srv://admin:admin1234@cluster0-ya4ra.mongodb.net/test?retryWrites=true";
 
@@ -15,12 +15,11 @@ const mongoDbPromise = mongoClientPromise.then(client => client.db("mydb"));//te
 const root = { client: mongoClientPromise, db: mongoDbPromise };
 const executableSchema = makeExecutableSchema({ typeDefs: schema, resolvers });
 
-app.use(
-  "/graphql",
-  expressGraphql({
+app.use("/graphql", expressGraphql({
     schema: executableSchema,
     graphiql: true,
     rootValue: root
   })
 );
-app.listen(3000, () => console.log(`Servidor ejecutando en http://localhost:3000/graphql`));
+
+app.listen(3000, () => console.log(`Servidor GraphQL ejecutando en http://localhost:3000/graphql`));

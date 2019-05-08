@@ -11,7 +11,7 @@ rml:source "./input/newInput.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*".
 
-<#ASIGNATURASOURCE>
+<#SUBJECTSOURCE>
 rml:source "./input/newInput.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.matricula.Asignatura.*".
@@ -40,9 +40,9 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:registration;
+    rr:predicate schema:subjects;
     rr:objectMap  [
-           rr:parentTriplesMap <#ASIGNATURAmapping>;
+           rr:parentTriplesMap <#SUBJECTmapping>;
            rr:joinCondition [
             rr:child "nombre" ;
             rr:parent "^^^.nombre";
@@ -50,8 +50,8 @@ rr:predicateObjectMap [
         ];
 ].
 
-<#ASIGNATURAmapping>
-rml:logicalSource <#ASIGNATURASOURCE>;
+<#SUBJECTmapping>
+rml:logicalSource <#SUBJECTSOURCE>;
 
  rr:subjectMap [
     rr:termType rr:BlankNode;
@@ -64,7 +64,7 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:credit;
+    rr:predicate schema:credits;
     rr:objectMap [ rml:reference "creditos" ];
 ];
 

@@ -3,7 +3,7 @@ export const type = `
   type Course {
     _id: String
     name: String
-    credit: String
+    credits: Int
     department: String
   }
 
@@ -36,20 +36,22 @@ export const type = `
   input CourseInput {
     _id: String
     name: String
-    credit: String
+    credits: Int
     department: String
   }
 
   input CourseMutationInput {
     name: String
-    credit: String
+    credits: Int
+    credits_INC: Int
+    credits_DEC: Int
     department: String
   }
 
   input CourseSort {
     _id: Int
     name: Int
-    credit: Int
+    credits: Int
     department: Int
   }
 
@@ -64,13 +66,13 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    credit_contains: String
-    credit_startsWith: String
-    credit_endsWith: String
-    credit_regex: String
-    credit: String
-    credit_ne: String
-    credit_in: [String]
+    credits_lt: Int
+    credits_lte: Int
+    credits_gt: Int
+    credits_gte: Int
+    credits: Int
+    credits_ne: Int
+    credits_in: [Int]
     department_contains: String
     department_startsWith: String
     department_endsWith: String
@@ -125,13 +127,13 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    credit_contains: String,
-    credit_startsWith: String,
-    credit_endsWith: String,
-    credit_regex: String,
-    credit: String,
-    credit_ne: String,
-    credit_in: [String],
+    credits_lt: Int,
+    credits_lte: Int,
+    credits_gt: Int,
+    credits_gte: Int,
+    credits: Int,
+    credits_ne: Int,
+    credits_in: [Int],
     department_contains: String,
     department_startsWith: String,
     department_endsWith: String,

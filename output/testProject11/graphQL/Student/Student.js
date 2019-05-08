@@ -4,9 +4,11 @@ export default {
   fields: {
     _id: "MongoId",
     name: "String",
-    email: "String",
     age: "Int",
-    relationshipField: "StringArray"
+    email: "String",
+    phone: "Int",
+    credits: "Float",
+    repetidor: "Boolean"
   },
   relationships: {
 

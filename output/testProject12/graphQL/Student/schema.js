@@ -3,9 +3,11 @@ export const type = `
   type Student {
     _id: String
     name: String
-    email: String
     age: Int
-    relationshipField: [String]
+    email: String
+    phone: Int
+    credits: Float
+    repetidor: Boolean
   }
 
   type StudentQueryResults {
@@ -37,32 +39,36 @@ export const type = `
   input StudentInput {
     _id: String
     name: String
-    email: String
     age: Int
-    relationshipField: [String]
+    email: String
+    phone: Int
+    credits: Float
+    repetidor: Boolean
   }
 
   input StudentMutationInput {
     name: String
-    email: String
     age: Int
     age_INC: Int
     age_DEC: Int
-    relationshipField: [String]
-    relationshipField_PUSH: String
-    relationshipField_CONCAT: [String]
-    relationshipField_UPDATE: StringArrayUpdate
-    relationshipField_UPDATES: [StringArrayUpdate]
-    relationshipField_PULL: [String]
-    relationshipField_ADDTOSET: [String]
+    email: String
+    phone: Int
+    phone_INC: Int
+    phone_DEC: Int
+    credits: Float
+    credits_INC: Int
+    credits_DEC: Int
+    repetidor: Boolean
   }
 
   input StudentSort {
     _id: Int
     name: Int
-    email: Int
     age: Int
-    relationshipField: Int
+    email: Int
+    phone: Int
+    credits: Int
+    repetidor: Int
   }
 
   input StudentFilters {
@@ -76,13 +82,6 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    email_contains: String
-    email_startsWith: String
-    email_endsWith: String
-    email_regex: String
-    email: String
-    email_ne: String
-    email_in: [String]
     age_lt: Int
     age_lte: Int
     age_gt: Int
@@ -90,16 +89,30 @@ export const type = `
     age: Int
     age_ne: Int
     age_in: [Int]
-    relationshipField_count: Int
-    relationshipField_textContains: String
-    relationshipField_startsWith: String
-    relationshipField_endsWith: String
-    relationshipField_regex: String
-    relationshipField: [String]
-    relationshipField_in: [[String]]
-    relationshipField_contains: String
-    relationshipField_containsAny: [String]
-    relationshipField_ne: [String]
+    email_contains: String
+    email_startsWith: String
+    email_endsWith: String
+    email_regex: String
+    email: String
+    email_ne: String
+    email_in: [String]
+    phone_lt: Int
+    phone_lte: Int
+    phone_gt: Int
+    phone_gte: Int
+    phone: Int
+    phone_ne: Int
+    phone_in: [Int]
+    credits_lt: Float
+    credits_lte: Float
+    credits_gt: Float
+    credits_gte: Float
+    credits: Float
+    credits_ne: Float
+    credits_in: [Float]
+    repetidor: Boolean
+    repetidor_ne: Boolean
+    repetidor_in: [Boolean]
     OR: [StudentFilters]
   }
   
@@ -147,13 +160,6 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    email_contains: String,
-    email_startsWith: String,
-    email_endsWith: String,
-    email_regex: String,
-    email: String,
-    email_ne: String,
-    email_in: [String],
     age_lt: Int,
     age_lte: Int,
     age_gt: Int,
@@ -161,16 +167,30 @@ export const query = `
     age: Int,
     age_ne: Int,
     age_in: [Int],
-    relationshipField_count: Int,
-    relationshipField_textContains: String,
-    relationshipField_startsWith: String,
-    relationshipField_endsWith: String,
-    relationshipField_regex: String,
-    relationshipField: [String],
-    relationshipField_in: [[String]],
-    relationshipField_contains: String,
-    relationshipField_containsAny: [String],
-    relationshipField_ne: [String],
+    email_contains: String,
+    email_startsWith: String,
+    email_endsWith: String,
+    email_regex: String,
+    email: String,
+    email_ne: String,
+    email_in: [String],
+    phone_lt: Int,
+    phone_lte: Int,
+    phone_gt: Int,
+    phone_gte: Int,
+    phone: Int,
+    phone_ne: Int,
+    phone_in: [Int],
+    credits_lt: Float,
+    credits_lte: Float,
+    credits_gt: Float,
+    credits_gte: Float,
+    credits: Float,
+    credits_ne: Float,
+    credits_in: [Float],
+    repetidor: Boolean,
+    repetidor_ne: Boolean,
+    repetidor_in: [Boolean],
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

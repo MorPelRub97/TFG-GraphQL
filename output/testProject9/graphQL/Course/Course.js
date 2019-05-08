@@ -4,7 +4,7 @@ export default {
   fields: {
     _id: "MongoId",
     name: "String",
-    credit: "String",
+    credits: "Int",
     department: "String"
   },
   relationships: {
