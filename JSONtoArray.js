@@ -10,7 +10,7 @@ function isInt(n) {
 }
 
 function convertJSONtoArray(input){
-//var jsonfile = fs.readFileSync('./output/testProject8/rml/out.json','utf8');
+
 var jsonfile = fs.readFileSync(input,'utf8');
 
 var objArr = JSON.parse(jsonfile);

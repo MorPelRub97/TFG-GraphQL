@@ -30,9 +30,10 @@ app.get('/transform', function (req, res){
 app.post('/transform', function (req, res) {
 	if (!req.body) { return res.sendStatus(400) }
 
-  if(req.body.db_url && req.body.db_name && req.body.mapping_path && req.body.output_folder){
+  if(req.body.db_url && req.body.db_name && req.body.mapping_path && req.body.output_folder && req.body.port_no){
 
       generateOutput(req.body.mapping_path, req.body.output_folder);
+      generateServer(req.body.db_url, req.body.db_name, req.body.port_no, req.body.output_folder);
 			res.redirect('/');
 
 		} else {
@@ -130,10 +131,35 @@ function generateOutput(mappingPath, testProjectFolder){
 	/*El projectSetup se ha creado, llamamos a mongo-graphql-starter para crear los resolvers*/
 	import('./output/' + testProjectFolder + '/projectSetup.js').then((ProjectSetup) => {
      createGraphqlSchema(ProjectSetup, path.resolve("./output/" + testProjectFolder)).then(() => {
-       console.log('GraphQL resolvers generados con éxito');
+       console.log('GraphQL resolvers para ' + testProjectFolder + ' generados con éxito');
      });
 	 });
 	});
+}
+
+
+function generateServer(dbUrl, dbName, portNumber, testProjectFolder){
+  var texto = "import { MongoClient } from \"mongodb\";\n"
+            + "import expressGraphql from \"express-graphql\";\n"
+            + "import resolvers from \"./graphQL/resolver.js\";\n"
+            + "import schema from \"./graphQL/schema.js\";\n"
+            + "import { makeExecutableSchema } from \"graphql-tools\";\n"
+            + "import express from \"express\";\n\n"
+            + "const app = express();\n\n"
+            + "const connString = \"" + dbUrl + "\";\n\n"
+            + "const mongoClientPromise = MongoClient.connect(connString, { useNewUrlParser: true });\n"
+            + "const mongoDbPromise = mongoClientPromise.then(client => client.db(\"" + dbName + "\"));\n\n"
+            + "const root = { client: mongoClientPromise, db: mongoDbPromise };\n"
+            + "const executableSchema = makeExecutableSchema({ typeDefs: schema, resolvers });\n\n"
+            + "app.use(\"/graphql\", expressGraphql({\n"
+            + "\t\tschema: executableSchema,\n"
+            + "\t\tgraphiql: true,\n"
+            + "\t\trootValue: root\n"
+            + "\t})\n"
+            + ");\n\n"
+            + "app.listen(" + portNumber + ", () => console.log(`Servidor GraphQL ejecutando en http://localhost:" + portNumber + "/graphql`));";
+
+  fs.writeFile('./output/' + testProjectFolder + '/server.js', texto, function(err) {});
 }
 
 app.listen(8080, () => console.log(`Servidor ejecutando en el puerto 8080`));
