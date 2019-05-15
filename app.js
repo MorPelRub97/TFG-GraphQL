@@ -7,8 +7,10 @@ import archiver from "archiver";
 import { createGraphqlSchema } from "mongo-graphql-starter";
 import path from "path";
 import * as fs from "file-system";
-import * as rmlParser from "./RML-Mapper2/index.js";
-import * as converter from "./JSONtoArray.js";
+//import * as rmlParser from "./RML-Mapper2/index.js";
+//import * as converter from "./JSONtoArray.js";
+import rocketrml from "rocketrml";
+import * as transformer from "./transformer.js";
 import mkdirp from "mkdirp";
 
 const app = express();//Se lanza la app
@@ -54,87 +56,70 @@ function deleteFolder(path) {
     fs.rmdirSync(path);
   }
 };
-
+deleteFolder('./output/' + testProjectFolder);
 
 function generateOutput(mappingPath, testProjectFolder){
 
-	deleteFolder('./output/' + testProjectFolder);
+mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/rml', function(err) {});
 
-	mkdirp('./output/' + testProjectFolder + '/rml', function(err) {});
-	let options={
-	};
+let options={
+};
 
-	/*Llamamos a Rocket para parsear el mapping*/
-	let result = rmlParser.parseFile(mappingPath, './output/' + testProjectFolder + '/rml/out.json',options).
-	catch((err) => {
-  	console.log(err);
-	});
-	/*El parseo del mapping ha ido bien*/
-	result.then(() => {
-		var fileJSON = converter.convertJSONtoArray('./output/' + testProjectFolder + '/rml/out.json');
-		var dataTypesObj = fileJSON[0].dataTypes;
+/*Llamamos a Rocket para parsear el mapping*/
+let result = rocketrml.parseFile(mappingPath, './output/' + testProjectFolder + '/rml/out.json',options).
+catch((err) => {
+    console.log(err);
+});
 
-  	var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
-          + "const {\n"
-          + "\tMongoIdType,\n"
-          + "\tMongoIdArrayType,\n"
-          + "\tStringType,\n"
-          + "\tStringArrayType,\n"
-          + "\tBoolType,\n"
-          + "\tIntType,\n"
-          + "\tIntArrayType,\n"
-          + "\tFloatType,\n"
-          + "\tFloatArrayType,\n"
-          + "\tarrayOf,\n"
-          + "\tObjectOf,\n"
-          + "} = dataTypes;\n"
-          + "\n";
+/*El parseo del mapping ha ido bien*/
+result.then(() => {
+  var fileJSON = transformer.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
+  //var dataTypesObj = fileJSON[0].dataTypes;
 
-		for (var k in fileJSON){
-  				texto += "export const " + fileJSON[k].nombreTabla + " = {\n"
-         + "\ttable: \"" + fileJSON[k].nombreTabla.toLowerCase() + "s\",\n"
-         + "\tfields: {\n"
-         + "\t\t_id: MongoIdType,\n";
-         var i;
-         var tamAtributosArr = fileJSON[k].atributos.length;
-         for(i = 0; i < tamAtributosArr; i++){
-           if(i == tamAtributosArr - 1){//Ultima pos, no añadir coma
-             if(fileJSON[k].atributos[i] == "@id"){
-               fileJSON[k].atributos[i] = "relationshipField"
-               texto += "\t\t" + fileJSON[k].atributos[i] + ": StringArrayType\n";
-             }
-             else{
-               for (var property in dataTypesObj) {
-                 if (dataTypesObj.hasOwnProperty(property)) {
-                   if(property == fileJSON[k].atributos[i]){
-                     texto += "\t\t" + fileJSON[k].atributos[i] + ": " + dataTypesObj[property] + "\n";
-                   }
-                 }
-               }
-             }
-           }
-           else{
-             for (var property in dataTypesObj) {
-               if (dataTypesObj.hasOwnProperty(property)) {
-                 if(property == fileJSON[k].atributos[i]){
-                   texto += "\t\t" + fileJSON[k].atributos[i] + ": " + dataTypesObj[property] + ",\n";
-                 }
-               }
-             }
-           }
-         }
-  		 texto += "\t}\n"
-         		 + "};\n\n";
-			 }
+  var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
+            + "const {\n"
+            + "\tMongoIdType,\n"
+            + "\tMongoIdArrayType,\n"
+            + "\tStringType,\n"
+            + "\tStringArrayType,\n"
+            + "\tBoolType,\n"
+            + "\tIntType,\n"
+            + "\tIntArrayType,\n"
+            + "\tFloatType,\n"
+            + "\tFloatArrayType,\n"
+            + "\tarrayOf,\n"
+            + "\tObjectOf,\n"
+            + "} = dataTypes;\n\n";
 
-	fs.writeFile('./output/' + testProjectFolder + '/projectSetup.js', texto, function(err) {});
-	/*El projectSetup se ha creado, llamamos a mongo-graphql-starter para crear los resolvers*/
-	import('./output/' + testProjectFolder + '/projectSetup.js').then((ProjectSetup) => {
-     createGraphqlSchema(ProjectSetup, path.resolve("./output/" + testProjectFolder)).then(() => {
-       console.log('GraphQL resolvers para ' + testProjectFolder + ' generados con éxito');
-     });
-	 });
-	});
+  for(var k in fileJSON){
+    texto += "export const " + fileJSON[k].tabla + " = {\n"
+           + "\ttable: \"" + fileJSON[k].tabla.toLowerCase() + "s\",\n"
+           + "\tfields: {\n";
+    var i;
+    for(i = 0; i < fileJSON[k].atributos.length; i++){
+      var arraySplit = [];
+      if(i == fileJSON[k].atributos.length - 1){//Ultima pos, no añadir coma
+        arraySplit = fileJSON[k].atributos[i].split("-");//0-->nombre campo 1-->dataType
+        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + "\n";
+      }
+      else{
+        arraySplit = fileJSON[k].atributos[i].split("-");//0-->nombre campo 1-->dataType
+        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
+      }
+    }
+    texto += "\t}\n"
+           + "};\n\n";
+  }
+
+  fs.writeFile('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/projectSetup.js', texto, function(err) {});
+
+  /*El projectSetup se ha creado, llamamos a mongo-graphql-starter para crear los resolvers*/
+  import('./output/' + testProjectFolder + '/projectSetup.js').then((ProjectSetup) => {
+       createGraphqlSchema(ProjectSetup, path.resolve("./output/" + testProjectFolder)).then(() => {
+         console.log('GraphQL resolvers generados con éxito');
+       });
+  });
+});
 }
 
 

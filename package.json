@@ -30,6 +30,7 @@
     "mongodb": "^3.1.13",
     "n3": "^1.0.5",
     "pug": "^2.0.3",
+    "rocketrml": "^1.0.1",
     "safe-eval": "^0.4.1",
     "stream-json": "^1.2.1",
     "sync-request": "^6.1.0",

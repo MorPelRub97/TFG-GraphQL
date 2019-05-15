@@ -1,22 +1,52 @@
 [
   {
+    "id": "0002",
     "nombre": "David Moreno",
     "edad": 21,
+    "localizacion": {
+        "Direccion": {
+          "id": "0001",
+          "calle": "calle 1"
+        }
+    },
     "email": "david@email.com",
-    "telefono": 647714374,
-    "creditos": 30.5
+    "matricula": {
+      "Asignatura":
+      [
+        {
+          "id": "0002",
+          "nombre": "Web semántica y Linked data",
+          "creditos": 3
+        },
+        {
+          "id": "0003",
+          "nombre": "Sistemas dinámicos, caos y fractales",
+          "creditos": 6,
+          "departamento": "DMA"
+        }
+
+      ]
+    }
   },
   {
+    "id": "0001",
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
-    "email": "alvaro@email.com",
-    "repetidor": false,
-    "creditos": 27.5
-  },
-  {
-    "nombre": "Freddy",
-    "edad": 21,
-    "email": "freddy@email.com"
+    "localizacion": {
+        "Direccion": {
+          "id": "0001",
+          "calle": "calle 2"
+        }
+    },
+    "matricula": {
+      "Asignatura":
+      [
+        {
+          "id": "0001",
+          "nombre": "Inteligencia Artificial",
+          "creditos": 6
+        }
+      ]
+    }
   }
-
 ]

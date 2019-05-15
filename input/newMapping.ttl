@@ -6,7 +6,7 @@
 @prefix schema: <http://schema.org/>.
 @base <http://sti2.at/> . #the base for the classes
 
-<#LOGICALSOURCE>
+<#STUDENTSOURCE>
 rml:source "./input/newInput.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*".
@@ -14,10 +14,10 @@ rml:iterator "$.*".
 <#SUBJECTSOURCE>
 rml:source "./input/newInput.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.matricula.Asignatura.*".
+rml:iterator "$.*.asignaturas.Asignatura.*".
 
 <#ALUMNOmapping>
-rml:logicalSource <#LOGICALSOURCE>;
+rml:logicalSource <#STUDENTSOURCE>;
 
  rr:subjectMap [
     rr:termType rr:BlankNode;
@@ -55,7 +55,7 @@ rml:logicalSource <#SUBJECTSOURCE>;
 
  rr:subjectMap [
     rr:termType rr:BlankNode;
-    rr:class schema:Course;
+    rr:class schema:Subject;
  ];
 
 rr:predicateObjectMap [

@@ -1,0 +1,48 @@
+[
+  [],
+  [
+    {
+      "@type": "http://mytestprefix.org/Person",
+      "http://mytestprefix.org/id": "0001",
+      "http://mytestprefix.org/name": "Tom A.",
+      "http://mytestprefix.org/age": 15,
+      "http://mytestprefix.org/direccion": {
+        "@type": "http://mytestprefix.org/Direccion",
+        "http://mytestprefix.org/street": "calle 1"
+      },
+      "http://mytestprefix.org/asignaturas": [
+        {
+          "@type": "http://mytestprefix.org/Asignatura",
+          "http://mytestprefix.org/id": "0001",
+          "http://mytestprefix.org/name": "Sistemas dinámicos, caos y fractales",
+          "http://mytestprefix.org/credits": 6,
+          "http://mytestprefix.org/requires": []
+        },
+        {
+          "@type": "http://mytestprefix.org/Asignatura",
+          "http://mytestprefix.org/id": "0003",
+          "http://mytestprefix.org/name": "Inteligencia artificial",
+          "http://mytestprefix.org/credits": 6,
+          "http://mytestprefix.org/requires": []
+        }
+      ]
+    },
+    {
+      "@type": "http://mytestprefix.org/Person",
+      "http://mytestprefix.org/id": "0002",
+      "http://mytestprefix.org/name": "Tom B.",
+      "http://mytestprefix.org/age": 16,
+      "http://mytestprefix.org/direccion": [],
+      "http://mytestprefix.org/asignaturas": {
+        "@type": "http://mytestprefix.org/Asignatura",
+        "http://mytestprefix.org/id": "0002",
+        "http://mytestprefix.org/name": "Web semántica y linked data",
+        "http://mytestprefix.org/credits": 3,
+        "http://mytestprefix.org/department": "IA",
+        "http://mytestprefix.org/requires": []
+      }
+    }
+  ],
+  [],
+  []
+]

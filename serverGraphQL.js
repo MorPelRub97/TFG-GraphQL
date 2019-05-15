@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 import expressGraphql from "express-graphql";
-import resolvers from "./output/testProject10/graphQL/resolver.js";
-import schema from "./output/testProject10/graphQL/schema.js";
+import resolvers from "./output/testProject4/graphQL/resolver.js";
+import schema from "./output/testProject4/graphQL/schema.js";
 import { makeExecutableSchema } from "graphql-tools";
 import express from "express";
 

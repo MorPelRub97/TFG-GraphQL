@@ -1,0 +1,35 @@
+[
+  {
+    "@type": "http://mytestprefix.org/Direction",
+    "http://mytestprefix.org/field4": "Alpedrete",
+    "@id": "http://sti2.at/#DIRECCIONmapping_1"
+  },
+  {
+    "@type": "http://mytestprefix.org/Person",
+    "http://mytestprefix.org/name": "David M.",
+    "http://mytestprefix.org/age": "21",
+    "@id": "http://sti2.at/#Mapping_1",
+    "http://mytestprefix.org/sports": {
+      "@id": "http://sti2.at/#SPORTSmapping_1"
+    },
+    "http://mytestprefix.org/direccion": {
+      "@id": "http://sti2.at/#DIRECCIONmapping_1"
+    }
+  },
+  {
+    "@type": "http://mytestprefix.org/Sport",
+    "http://mytestprefix.org/name": [
+      "Tennis",
+      "Messi"
+    ],
+    "http://mytestprefix.org/field2": [
+      "Football",
+      "Ronaldo"
+    ],
+    "http://mytestprefix.org/field3": [
+      "24",
+      "10"
+    ],
+    "@id": "http://sti2.at/#SPORTSmapping_1"
+  }
+]

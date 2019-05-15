@@ -3,7 +3,7 @@
     "nombre": "David Moreno",
     "edad": 21,
     "email": "david@email.com",
-    "matricula": {
+    "asignaturas": {
       "Asignatura":
       [
         {
@@ -22,7 +22,7 @@
   {
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
-    "matricula": {
+    "asignaturas": {
       "Asignatura":
       [
         {

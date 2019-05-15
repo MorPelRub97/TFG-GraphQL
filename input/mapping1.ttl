@@ -11,6 +11,17 @@ rml:source "./input/input1.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*".
 
+<#SUBJECTSOURCE>
+rml:source "./input/input1.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.*.matricula.Asignatura.*".
+
+<#DIRECCIONSOURCE>
+rml:source "./input/input1.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.*.localizacion.Direccion".
+
+
 <#ALUMNOmapping>
 rml:logicalSource <#LOGICALSOURCE>;
 
@@ -20,13 +31,13 @@ rml:logicalSource <#LOGICALSOURCE>;
  ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:name;
-    rr:objectMap [ rml:reference "nombre" ];
+    rr:predicate schema:id;
+    rr:objectMap [ rml:reference "id" ];
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:age;
-    rr:objectMap [ rml:reference "edad" ];
+    rr:predicate schema:name;
+    rr:objectMap [ rml:reference "nombre" ];
 ];
 
 rr:predicateObjectMap [
@@ -35,16 +46,73 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:phone;
-    rr:objectMap [ rml:reference "telefono" ];
+    rr:predicate schema:location;
+    rr:objectMap  [
+           rr:parentTriplesMap <#DIRECCIONmapping>;
+           rr:joinCondition [
+            rr:child "id" ;
+            rr:parent "^^.id";
+            ]
+        ];
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:repetidor;
-    rr:objectMap [ rml:reference "repetidor" ];
+    rr:predicate schema:age;
+    rr:objectMap [ rml:reference "edad" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:subjects;
+    rr:objectMap  [
+           rr:parentTriplesMap <#SUBJECTmapping>;
+           rr:joinCondition [
+            rr:child "id" ;
+            rr:parent "^^^.id";
+            ]
+        ];
+].
+
+<#SUBJECTmapping>
+rml:logicalSource <#SUBJECTSOURCE>;
+
+ rr:subjectMap [
+    rr:termType rr:BlankNode;
+    rr:class schema:Subject;
+ ];
+
+rr:predicateObjectMap [
+     rr:predicate schema:id;
+     rr:objectMap [ rml:reference "id" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [ rml:reference "nombre" ];
 ];
 
 rr:predicateObjectMap [
     rr:predicate schema:credits;
     rr:objectMap [ rml:reference "creditos" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:department;
+    rr:objectMap [ rml:reference "departamento" ];
+].
+
+<#DIRECCIONmapping>
+rml:logicalSource <#DIRECCIONSOURCE>;
+rr:subjectMap [
+    rr:termType rr:BlankNode;
+    rr:class schema:Direccion;
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:id;
+    rr:objectMap [ rml:reference "id" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:street;
+    rr:objectMap [ rml:reference "calle" ];
 ].

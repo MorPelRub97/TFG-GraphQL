@@ -9,7 +9,22 @@
 <#LOGICALSOURCE>
 rml:source "./input/input.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$".
+rml:iterator "$.*".
+
+<#SUBJECTSOURCE>
+rml:source "./input/input.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.asignaturas.Asignatura.*".
+
+<#REQUIRESSOURCE>
+rml:source "./input/input.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.asignaturas.Asignatura.*.requires.*".
+
+<#DIRECCIONSOURCE>
+rml:source "./input/input.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.direccion".
 
 
 <#Mapping>
@@ -17,38 +32,66 @@ rml:logicalSource <#LOGICALSOURCE>;
 
  rr:subjectMap [
     rr:termType rr:BlankNode;
-    rr:class prefix:Persona;
+    rr:class prefix:Person;
  ];
 
+rr:predicateObjectMap [
+    rr:predicate prefix:id;
+    rr:objectMap [ rml:reference "id" ];
+];
 
 rr:predicateObjectMap [
     rr:predicate prefix:name;
-    rr:objectMap [ rml:reference "name"];
+    rr:objectMap [ rml:reference "nombre" ];
 ];
 
 rr:predicateObjectMap [
     rr:predicate prefix:age;
-    rr:objectMap [ rml:reference "age" ];
+    rr:objectMap [ rml:reference "edad" ];
 ];
 
 rr:predicateObjectMap [
-    rr:predicate prefix:likesSports;
+    rr:predicate prefix:direccion;
     rr:objectMap  [
-           rr:parentTriplesMap <#SPORTSmapping>;
+
+           rr:parentTriplesMap <#DIRECCIONmapping>;
+        ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate prefix:asignaturas;
+    rr:objectMap  [
+
+           rr:parentTriplesMap <#SUBJECTmapping>;
         ];
 ].
 
-<#SPORTSmapping>
-rml:logicalSource <#LOGICALSOURCE>;
+<#SUBJECTmapping>
+rml:logicalSource <#SUBJECTSOURCE>;
 
  rr:subjectMap [
     rr:termType rr:BlankNode;
-    rr:class prefix:Sport;
+    rr:class prefix:Asignatura;
  ];
 
 rr:predicateObjectMap [
+    rr:predicate prefix:id;
+    rr:objectMap [ rml:reference "id" ];
+];
+
+rr:predicateObjectMap [
     rr:predicate prefix:name;
-    rr:objectMap [ rml:reference "sports.School[0].name" ];
+    rr:objectMap [ rml:reference "nombre" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate prefix:credits;
+    rr:objectMap [ rml:reference "creditos" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate prefix:department;
+    rr:objectMap [ rml:reference "departamento" ];
 ];
 
 rr:predicateObjectMap [
@@ -59,7 +102,7 @@ rr:predicateObjectMap [
 ].
 
 <#REQmapping>
-rml:logicalSource <#LOGICALSOURCE>;
+rml:logicalSource <#REQUIRESSOURCE>;
 rr:subjectMap [
     rr:termType rr:BlankNode;
     rr:class prefix:Requirement;
@@ -67,5 +110,17 @@ rr:subjectMap [
 
 rr:predicateObjectMap [
     rr:predicate prefix:thing;
-    rr:objectMap [ rml:reference "sports.School[0].requires.*.thing" ];
+    rr:objectMap [ rml:reference "thing" ];
+].
+
+<#DIRECCIONmapping>
+rml:logicalSource <#DIRECCIONSOURCE>;
+rr:subjectMap [
+    rr:termType rr:BlankNode;
+    rr:class prefix:Direccion;
+];
+
+rr:predicateObjectMap [
+    rr:predicate prefix:street;
+    rr:objectMap [ rml:reference "calle" ];
 ].
