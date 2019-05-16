@@ -3,8 +3,10 @@ export const type = `
   type Student {
     _id: Int
     name: String
-    age: Int
     email: String
+    age: Int
+    location: String
+    subjects: String
   }
 
   type StudentQueryResults {
@@ -36,23 +38,29 @@ export const type = `
   input StudentInput {
     _id: Int
     name: String
-    age: Int
     email: String
+    age: Int
+    location: String
+    subjects: String
   }
 
   input StudentMutationInput {
     name: String
+    email: String
     age: Int
     age_INC: Int
     age_DEC: Int
-    email: String
+    location: String
+    subjects: String
   }
 
   input StudentSort {
     _id: Int
     name: Int
-    age: Int
     email: Int
+    age: Int
+    location: Int
+    subjects: Int
   }
 
   input StudentFilters {
@@ -70,13 +78,6 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    age_lt: Int
-    age_lte: Int
-    age_gt: Int
-    age_gte: Int
-    age: Int
-    age_ne: Int
-    age_in: [Int]
     email_contains: String
     email_startsWith: String
     email_endsWith: String
@@ -84,6 +85,27 @@ export const type = `
     email: String
     email_ne: String
     email_in: [String]
+    age_lt: Int
+    age_lte: Int
+    age_gt: Int
+    age_gte: Int
+    age: Int
+    age_ne: Int
+    age_in: [Int]
+    location_contains: String
+    location_startsWith: String
+    location_endsWith: String
+    location_regex: String
+    location: String
+    location_ne: String
+    location_in: [String]
+    subjects_contains: String
+    subjects_startsWith: String
+    subjects_endsWith: String
+    subjects_regex: String
+    subjects: String
+    subjects_ne: String
+    subjects_in: [String]
     OR: [StudentFilters]
   }
   
@@ -135,13 +157,6 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    age_lt: Int,
-    age_lte: Int,
-    age_gt: Int,
-    age_gte: Int,
-    age: Int,
-    age_ne: Int,
-    age_in: [Int],
     email_contains: String,
     email_startsWith: String,
     email_endsWith: String,
@@ -149,6 +164,27 @@ export const query = `
     email: String,
     email_ne: String,
     email_in: [String],
+    age_lt: Int,
+    age_lte: Int,
+    age_gt: Int,
+    age_gte: Int,
+    age: Int,
+    age_ne: Int,
+    age_in: [Int],
+    location_contains: String,
+    location_startsWith: String,
+    location_endsWith: String,
+    location_regex: String,
+    location: String,
+    location_ne: String,
+    location_in: [String],
+    subjects_contains: String,
+    subjects_startsWith: String,
+    subjects_endsWith: String,
+    subjects_regex: String,
+    subjects: String,
+    subjects_ne: String,
+    subjects_in: [String],
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

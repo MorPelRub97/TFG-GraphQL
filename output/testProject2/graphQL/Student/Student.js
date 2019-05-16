@@ -4,8 +4,10 @@ export default {
   fields: {
     _id: "Int",
     name: "String",
+    email: "String",
     age: "Int",
-    email: "String"
+    location: "String",
+    subjects: "String"
   },
   relationships: {
 

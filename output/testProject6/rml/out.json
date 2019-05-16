@@ -9,14 +9,9 @@
     "http://schema.org/location": {
       "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECCIONmapping_1"
     },
-    "http://schema.org/subjects": [
-      {
-        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_1"
-      },
-      {
-        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_2"
-      }
-    ]
+    "http://schema.org/subjects": {
+      "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_1"
+    }
   },
   {
     "@type": "http://schema.org/Student",
@@ -28,7 +23,7 @@
       "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECCIONmapping_2"
     },
     "http://schema.org/subjects": {
-      "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_3"
+      "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_2"
     }
   },
   {
@@ -52,17 +47,9 @@
   },
   {
     "@type": "http://schema.org/Subject",
-    "http://schema.org/_id": "3",
-    "http://schema.org/name": "Sistemas dinámicos, caos y fractales",
-    "http://schema.org/credits": "6",
-    "http://schema.org/department": "DMA",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_2"
-  },
-  {
-    "@type": "http://schema.org/Subject",
     "http://schema.org/_id": "1",
     "http://schema.org/name": "Inteligencia Artificial",
     "http://schema.org/credits": "6",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_3"
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_2"
   }
 ]

@@ -1,11 +1,11 @@
 [
   {
-    "id": "0002",
+    "_id": "2",
     "nombre": "David Moreno",
     "edad": 21,
     "localizacion": {
         "Direccion": {
-          "id": "0001",
+          "_id": "1",
           "calle": "calle 1"
         }
     },
@@ -14,27 +14,20 @@
       "Asignatura":
       [
         {
-          "id": "0002",
+          "_id": "2",
           "nombre": "Web semántica y Linked data",
           "creditos": 3
-        },
-        {
-          "id": "0003",
-          "nombre": "Sistemas dinámicos, caos y fractales",
-          "creditos": 6,
-          "departamento": "DMA"
         }
-
       ]
     }
   },
   {
-    "id": "0001",
+    "_id": "1",
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
     "localizacion": {
         "Direccion": {
-          "id": "0001",
+          "_id": "2",
           "calle": "calle 2"
         }
     },
@@ -42,7 +35,7 @@
       "Asignatura":
       [
         {
-          "id": "0001",
+          "_id": "1",
           "nombre": "Inteligencia Artificial",
           "creditos": 6
         }

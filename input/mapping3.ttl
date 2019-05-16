@@ -20,8 +20,8 @@ rml:logicalSource <#LOGICALSOURCE>;
  ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:student_id;
-    rr:objectMap [ rml:reference "estudiante_id" ];
+    rr:predicate schema:_id;
+    rr:objectMap [ rml:reference "_id" ];
 ];
 
 rr:predicateObjectMap [

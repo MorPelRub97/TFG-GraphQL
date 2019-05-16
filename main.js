@@ -38,10 +38,10 @@ result.then(() => {
             + "\tFloatType,\n"
             + "\tFloatArrayType,\n"
             + "\tarrayOf,\n"
-            + "\tObjectOf,\n"
+            + "\tobjectOf,\n"
             + "} = dataTypes;\n\n";
 
-  for(var k in fileJSON){
+  /*for(var k in fileJSON){
     texto += "export const " + fileJSON[k].tabla + " = {\n"
            + "\ttable: \"" + fileJSON[k].tabla.toLowerCase() + "s\",\n"
            + "\tfields: {\n";
@@ -54,6 +54,26 @@ result.then(() => {
       }
       else{
         arraySplit = fileJSON[k].atributos[i].split("-");//0-->nombre campo 1-->dataType
+        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
+      }
+    }
+    texto += "\t}\n"
+           + "};\n\n";
+  }*/
+  var j;
+  for(j = fileJSON.length-1; j >= 0; j--){
+    texto += "export const " + fileJSON[j].tabla + " = {\n"
+           + "\ttable: \"" + fileJSON[j].tabla.toLowerCase() + "s\",\n"
+           + "\tfields: {\n";
+    var i;
+    for(i = 0; i < fileJSON[j].atributos.length; i++){
+      var arraySplit = [];
+      if(i == fileJSON[j].atributos.length - 1){//Ultima pos, no añadir coma
+        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
+        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + "\n";
+      }
+      else{
+        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
         texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
       }
     }
@@ -73,6 +93,6 @@ result.then(() => {
 }
 
 //generateOutput('/home/david/Escritorio/mapping1.ttl', 'testProject11');
-generateOutput('./input/mapping1.ttl', 'testProject4');
+generateOutput('./input/mapping1.ttl', 'testProject6');
 
 module.exports = { generateOutput };

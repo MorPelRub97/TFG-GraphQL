@@ -3,8 +3,10 @@ export const type = `
   type Student {
     _id: Int
     name: String
-    age: Int
     email: String
+    age: Int
+    location: Direccion
+    subjects: Subject
   }
 
   type StudentQueryResults {
@@ -36,23 +38,31 @@ export const type = `
   input StudentInput {
     _id: Int
     name: String
-    age: Int
     email: String
+    age: Int
+    location: DireccionInput
+    subjects: SubjectInput
   }
 
   input StudentMutationInput {
     name: String
+    email: String
     age: Int
     age_INC: Int
     age_DEC: Int
-    email: String
+    location: DireccionInput
+    location_UPDATE: DireccionMutationInput
+    subjects: SubjectInput
+    subjects_UPDATE: SubjectMutationInput
   }
 
   input StudentSort {
     _id: Int
     name: Int
-    age: Int
     email: Int
+    age: Int
+    location: Int
+    subjects: Int
   }
 
   input StudentFilters {
@@ -70,13 +80,6 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    age_lt: Int
-    age_lte: Int
-    age_gt: Int
-    age_gte: Int
-    age: Int
-    age_ne: Int
-    age_in: [Int]
     email_contains: String
     email_startsWith: String
     email_endsWith: String
@@ -84,6 +87,17 @@ export const type = `
     email: String
     email_ne: String
     email_in: [String]
+    age_lt: Int
+    age_lte: Int
+    age_gt: Int
+    age_gte: Int
+    age: Int
+    age_ne: Int
+    age_in: [Int]
+    location_count: Int
+    location: DireccionFilters
+    subjects_count: Int
+    subjects: SubjectFilters
     OR: [StudentFilters]
   }
   
@@ -135,13 +149,6 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    age_lt: Int,
-    age_lte: Int,
-    age_gt: Int,
-    age_gte: Int,
-    age: Int,
-    age_ne: Int,
-    age_in: [Int],
     email_contains: String,
     email_startsWith: String,
     email_endsWith: String,
@@ -149,6 +156,17 @@ export const query = `
     email: String,
     email_ne: String,
     email_in: [String],
+    age_lt: Int,
+    age_lte: Int,
+    age_gt: Int,
+    age_gte: Int,
+    age: Int,
+    age_ne: Int,
+    age_in: [Int],
+    location_count: Int,
+    location: DireccionFilters,
+    subjects_count: Int,
+    subjects: SubjectFilters,
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

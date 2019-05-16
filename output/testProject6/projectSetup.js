@@ -10,18 +10,15 @@ const {
 	FloatType,
 	FloatArrayType,
 	arrayOf,
-	ObjectOf,
+	objectOf,
 } = dataTypes;
 
-export const Student = {
-	table: "students",
+export const Subject = {
+	table: "subjects",
 	fields: {
 		_id: IntType,
 		name: StringType,
-		email: StringType,
-		age: IntType,
-		location: StringType,
-		subjects: StringType
+		credits: IntType
 	}
 };
 
@@ -33,13 +30,15 @@ export const Direccion = {
 	}
 };
 
-export const Subject = {
-	table: "subjects",
+export const Student = {
+	table: "students",
 	fields: {
 		_id: IntType,
 		name: StringType,
-		credits: IntType,
-		department: StringType
+		email: StringType,
+		age: IntType,
+		location: objectOf(Direccion),
+		subjects: objectOf(Subject)
 	}
 };
 

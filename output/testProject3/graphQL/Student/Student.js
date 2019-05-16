@@ -2,10 +2,10 @@ export default {
   table: "students",
   typeName: "Student",
   fields: {
-    _id: "Int",
+    _id: "MongoId",
+    id: "Int",
     name: "String",
-    age: "Int",
-    email: "String"
+    age: "Int"
   },
   relationships: {
 

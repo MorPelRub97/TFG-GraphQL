@@ -16,7 +16,9 @@ const {
 export const Student = {
 	table: "students",
 	fields: {
-		_id: MongoIdType,
+		id: IntType,
+		name: StringType,
+		age: IntType
 	}
 };
 

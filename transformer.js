@@ -19,6 +19,10 @@ function isEmpty(obj) {//Devuelve true si el objeto esta vacio
     return true;
 }
 
+function isObject(a){
+  return (!!a) && (a.constructor === Object);
+}
+
 function existePos(tabla, arrObj){
   var encontrado = false;
   var i;
@@ -29,6 +33,18 @@ function existePos(tabla, arrObj){
     }
   }
   return -1;
+}
+
+function buscarIdDevolverTipo(idBuscado,input){
+  var arrayAux = [];
+  var aux;
+  for (var k in input){
+    if(input[k]["@id"] == idBuscado){
+      arrayAux = input[k]["@type"].split("/");
+      aux = arrayAux[arrayAux.length-1];
+      return aux;
+    }
+  }
 }
 
 function convertRDF(input){
@@ -55,13 +71,14 @@ function convertRDF(input){
         aux1 = arrayAux1[arrayAux1.length-1];//aux1 ---> nombre de la tabla
       }
       else if(arrayKeys[j] == "@id"){
-        //buscar el tipo de objeto relacionado
+        //Este campo se ignora
       }
       else{//campo normal
         arrayAux2 = arrayKeys[j].split("/");
         aux2 = arrayAux2[arrayAux2.length-1];//aux2 ---> nombre del campo
         aux3 = jsonFile[k][arrayKeys[j]];//aux3 ---> valor del campo
-        if(isNumeric(aux3)){
+
+        if(isNumeric(aux3)){//Numerico
           if(isInt(aux3)){
             typeAux = "IntType";
           }
@@ -69,7 +86,15 @@ function convertRDF(input){
             typeAux = "FloatType";
           }
         }
-        else{
+        else if(Array.isArray(aux3)){//Array
+          var tipo = buscarIdDevolverTipo(aux3[0]["@id"], jsonFile);
+          typeAux = "arrayOf(" + tipo + ")";
+        }
+        else if(isObject(aux3)){//Objeto
+          var tipo = buscarIdDevolverTipo(aux3["@id"], jsonFile);
+          typeAux = "objectOf(" + tipo + ")";
+        }
+        else{//String o Boolean
           if(aux3 == "true" || aux3 == "false"){
             typeAux = "BoolType";
           }
@@ -107,7 +132,7 @@ function convertRDF(input){
   return arrayObjectResult;
 }
 
-//convertRDF('./output/testProject4/rml/out.json')
+//convertRDF('./output/testProject2/rml/out.json')
 
 //console.log(jsonFile[0]["@id"]);
 module.exports = { convertRDF };

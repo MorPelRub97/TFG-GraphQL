@@ -1,12 +1,12 @@
 [
   {
-    "estudiante_id": "0002",
+    "_id": "0002",
     "nombre": "David Moreno",
     "edad": 21
   }
   ,
   {
-    "estudiante_id": "0001",
+    "_id": "0001",
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
     "email": "alvaro@email.com"

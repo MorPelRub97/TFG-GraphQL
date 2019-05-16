@@ -31,8 +31,8 @@ rml:logicalSource <#LOGICALSOURCE>;
  ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:id;
-    rr:objectMap [ rml:reference "id" ];
+    rr:predicate schema:_id;
+    rr:objectMap [ rml:reference "_id" ];
 ];
 
 rr:predicateObjectMap [
@@ -50,8 +50,8 @@ rr:predicateObjectMap [
     rr:objectMap  [
            rr:parentTriplesMap <#DIRECCIONmapping>;
            rr:joinCondition [
-            rr:child "id" ;
-            rr:parent "^^.id";
+            rr:child "_id" ;
+            rr:parent "^^._id";
             ]
         ];
 ];
@@ -66,8 +66,8 @@ rr:predicateObjectMap [
     rr:objectMap  [
            rr:parentTriplesMap <#SUBJECTmapping>;
            rr:joinCondition [
-            rr:child "id" ;
-            rr:parent "^^^.id";
+            rr:child "_id" ;
+            rr:parent "^^^._id";
             ]
         ];
 ].
@@ -81,8 +81,8 @@ rml:logicalSource <#SUBJECTSOURCE>;
  ];
 
 rr:predicateObjectMap [
-     rr:predicate schema:id;
-     rr:objectMap [ rml:reference "id" ];
+     rr:predicate schema:_id;
+     rr:objectMap [ rml:reference "_id" ];
 ];
 
 rr:predicateObjectMap [
@@ -108,8 +108,8 @@ rr:subjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:id;
-    rr:objectMap [ rml:reference "id" ];
+    rr:predicate schema:_id;
+    rr:objectMap [ rml:reference "_id" ];
 ];
 
 rr:predicateObjectMap [
