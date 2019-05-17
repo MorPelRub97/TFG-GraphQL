@@ -6,7 +6,8 @@
     "localizacion": {
         "Direccion": {
           "_id": "1",
-          "calle": "calle 1"
+          "calle": "calle Fake",
+          "numero": 1
         }
     },
     "email": "david@email.com",
@@ -19,16 +20,19 @@
           "creditos": 3
         }
       ]
-    }
+    },
+    "repetidor": false
   },
   {
     "_id": "1",
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
+    "email": "alvaro@email.com",
     "localizacion": {
         "Direccion": {
           "_id": "2",
-          "calle": "calle 2"
+          "calle": "calle Fake",
+          "numero": 2
         }
     },
     "matricula": {
@@ -38,8 +42,14 @@
           "_id": "1",
           "nombre": "Inteligencia Artificial",
           "creditos": 6
+        },
+        {
+          "_id": "2",
+          "nombre": "Web Semántica y Linked Data",
+          "creditos": 6
         }
       ]
-    }
+    },
+    "repetidor": false
   }
 ]

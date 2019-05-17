@@ -22,14 +22,6 @@ export const Subject = {
 	}
 };
 
-export const Direccion = {
-	table: "direccions",
-	fields: {
-		_id: IntType,
-		street: StringType
-	}
-};
-
 export const Student = {
 	table: "students",
 	fields: {
@@ -37,8 +29,32 @@ export const Student = {
 		name: StringType,
 		email: StringType,
 		age: IntType,
-		location: objectOf(Direccion),
-		subjects: objectOf(Subject)
+		failer: BoolType,
+		location: IntArrayType,
+		subjects: IntArrayType
+	},
+	relationships: {
+		location: {
+			get type() {
+				return Direction;
+			},
+			fkField: "location"
+		},
+		subjects: {
+			get type() {
+				return Subject;
+			},
+			fkField: "subjects"
+		}
+	}
+};
+
+export const Direction = {
+	table: "directions",
+	fields: {
+		_id: IntType,
+		street: StringType,
+		number: IntType
 	}
 };
 

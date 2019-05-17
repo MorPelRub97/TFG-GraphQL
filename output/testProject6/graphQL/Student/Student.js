@@ -1,4 +1,4 @@
-import Direccion from "../Direccion/Direccion";
+import Direction from "../Direction/Direction";
 import Subject from "../Subject/Subject";
 
 export default {
@@ -9,16 +9,26 @@ export default {
     name: "String",
     email: "String",
     age: "Int",
-    location: {
-      __isObject: true,
-      get type(){ return Direccion; }
-    },
-    subjects: {
-      __isObject: true,
-      get type(){ return Subject; }
-    }
+    failer: "Boolean",
+    location: "IntArray",
+    subjects: "IntArray"
   },
   relationships: {
-
+    location: {
+      get type(){ return Direction; },
+      fkField: "location",
+      keyField: "_id",
+      manyToMany: true,
+      __isArray: true,
+      __isObject: false
+    },
+    subjects: {
+      get type(){ return Subject; },
+      fkField: "subjects",
+      keyField: "_id",
+      manyToMany: true,
+      __isArray: true,
+      __isObject: false
+    }
   }
 };

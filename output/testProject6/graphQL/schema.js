@@ -1,4 +1,4 @@
-import { query as DireccionQuery, mutation as DireccionMutation, type as DireccionType } from './Direccion/schema';
+import { query as DirectionQuery, mutation as DirectionMutation, type as DirectionType } from './Direction/schema';
 import { query as StudentQuery, mutation as StudentMutation, type as StudentType } from './Student/schema';
 import { query as SubjectQuery, mutation as SubjectMutation, type as SubjectType } from './Subject/schema';
     
@@ -34,14 +34,14 @@ export default `
     value: Float
   }
 
-  ${DireccionType}
+  ${DirectionType}
 
   ${StudentType}
 
   ${SubjectType}
 
   type Query {
-    ${DireccionQuery}
+    ${DirectionQuery}
 
     ${StudentQuery}
 
@@ -49,7 +49,7 @@ export default `
   }
 
   type Mutation {
-    ${DireccionMutation}
+    ${DirectionMutation}
 
     ${StudentMutation}
 

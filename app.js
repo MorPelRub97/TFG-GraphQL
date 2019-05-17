@@ -56,10 +56,12 @@ function deleteFolder(path) {
     fs.rmdirSync(path);
   }
 };
-deleteFolder('./output/' + testProjectFolder);
+
+//deleteFolder('./output/' + testProjectFolder);
 
 function generateOutput(mappingPath, testProjectFolder){
 
+deleteFolder('./output/' + testProjectFolder);
 mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/rml', function(err) {});
 
 let options={
@@ -88,27 +90,57 @@ result.then(() => {
             + "\tFloatType,\n"
             + "\tFloatArrayType,\n"
             + "\tarrayOf,\n"
-            + "\tObjectOf,\n"
+            + "\tobjectOf,\n"
             + "} = dataTypes;\n\n";
 
-  for(var k in fileJSON){
-    texto += "export const " + fileJSON[k].tabla + " = {\n"
-           + "\ttable: \"" + fileJSON[k].tabla.toLowerCase() + "s\",\n"
+  var j;
+  for(j = fileJSON.length-1; j >= 0; j--){
+    texto += "export const " + fileJSON[j].tabla + " = {\n"
+           + "\ttable: \"" + fileJSON[j].tabla.toLowerCase() + "s\",\n"
            + "\tfields: {\n";
     var i;
-    for(i = 0; i < fileJSON[k].atributos.length; i++){
+    for(i = 0; i < fileJSON[j].atributos.length; i++){
       var arraySplit = [];
-      if(i == fileJSON[k].atributos.length - 1){//Ultima pos, no añadir coma
-        arraySplit = fileJSON[k].atributos[i].split("-");//0-->nombre campo 1-->dataType
+      if(i == fileJSON[j].atributos.length - 1){//Ultima pos, no añadir coma
+        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
         texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + "\n";
       }
       else{
-        arraySplit = fileJSON[k].atributos[i].split("-");//0-->nombre campo 1-->dataType
+        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
         texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
       }
     }
-    texto += "\t}\n"
-           + "};\n\n";
+    if(fileJSON[j].relaciones.length == 0){//Si la tabla no tiene relaciones
+      texto += "\t}\n"
+             + "};\n\n";
+    }
+    else{
+      texto += "\t},\n"
+            + "\trelationships: {\n";
+      var k;
+      for(k=0; k < fileJSON[j].relaciones.length; k++){
+        if(k == fileJSON[j].relaciones.length-1){//ultima pos, terminar
+        arraySplit = fileJSON[j].relaciones[k].split("-");//0-> nombre del campo de la relacion 1-> objeto con el que se relaciona 2->tipo de relacion
+        texto += "\t\t" + arraySplit[0] + ": {\n"
+              + "\t\t\tget type() {\n"
+              + "\t\t\t\treturn " + arraySplit[1] + ";\n"
+              + "\t\t\t},\n"
+              + "\t\t\tfkField: \"" + arraySplit[0] + "\"\n"
+              + "\t\t}\n"
+              + "\t}\n"
+              + "};\n\n";
+        }
+        else{
+          arraySplit = fileJSON[j].relaciones[k].split("-");//0-> nombre del campo de la relacion 1-> objeto con el que se relaciona 2->tipo de relacion
+          texto += "\t\t" + arraySplit[0] + ": {\n"
+                + "\t\t\tget type() {\n"
+                + "\t\t\t\treturn " + arraySplit[1] + ";\n"
+                + "\t\t\t},\n"
+                + "\t\t\tfkField: \"" + arraySplit[0] + "\"\n"
+                + "\t\t},\n";
+        }
+      }
+    }
   }
 
   fs.writeFile('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/projectSetup.js', texto, function(err) {});

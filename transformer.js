@@ -47,6 +47,29 @@ function buscarIdDevolverTipo(idBuscado,input){
   }
 }
 
+function busquedaSustituirObjectPorArray(array, input){
+
+  var arrayAux = input.split("-");
+  var coincide = arrayAux[0] + "-" + arrayAux[1] + "-objectRelation";
+  var i;
+  for(i = 0; i < array.length; i++){
+    console.log(array[i]);
+    console.log(coincide);
+    if(array[i] == coincide){//Si hay un objectRelation antes, se sustituye por arrayRelation
+      return i;
+    }
+  }
+  return -1;
+}
+
+function cambiarArrayPorObject(array, input){//Devuelve true si
+
+  for(var k in arrayAux1){
+
+  }
+
+}
+
 function convertRDF(input){
 
   //var file = fs.readFileSync('./output/testProject4/rml/out.json','utf8');
@@ -58,6 +81,9 @@ function convertRDF(input){
   for (var k in jsonFile){
     var arrayKeys = Object.keys(jsonFile[k]);
     var arrayFieldType = [];
+    var arrayAtributos = [];
+    var arrayRelations = [];
+    var arraySplit = [];
     var objectAux = {};
     var arrayFieldType = [];
     var pairFieldType;
@@ -88,11 +114,11 @@ function convertRDF(input){
         }
         else if(Array.isArray(aux3)){//Array
           var tipo = buscarIdDevolverTipo(aux3[0]["@id"], jsonFile);
-          typeAux = "arrayOf(" + tipo + ")";
+          typeAux = tipo + "-arrayRelation";
         }
         else if(isObject(aux3)){//Objeto
           var tipo = buscarIdDevolverTipo(aux3["@id"], jsonFile);
-          typeAux = "objectOf(" + tipo + ")";
+          typeAux = tipo + "-arrayRelation";
         }
         else{//String o Boolean
           if(aux3 == "true" || aux3 == "false"){
@@ -103,11 +129,26 @@ function convertRDF(input){
           }
         }
         pairFieldType = aux2 + "-" + typeAux;
-        arrayFieldType.push(pairFieldType);
+
+        if(pairFieldType.endsWith("-arrayRelation") || pairFieldType.endsWith("-objectRelation")){//campo join
+          arraySplit = pairFieldType.split("-");//0-> nombre del campo de la relacion 1-> objeto con el que se relaciona 2->tipo de relacion
+          if(arraySplit[2] == "arrayRelation"){
+            arrayFieldType.push(aux2 + "-IntArrayType");
+            arrayRelations.push(pairFieldType);
+          }
+          if(arraySplit[2] == "objectRelation"){//objectRelation
+            arrayFieldType.push(aux2 + "-IntType");
+            arrayRelations.push(pairFieldType);
+          }
+        }
+        else{//campo normal
+          arrayFieldType.push(pairFieldType);
+        }
       }
     }
     objectAux.tabla = aux1;
     objectAux.atributos = arrayFieldType;
+    objectAux.relaciones = arrayRelations;
     arrayObject.push(objectAux);
   }
 
@@ -132,7 +173,7 @@ function convertRDF(input){
   return arrayObjectResult;
 }
 
-//convertRDF('./output/testProject2/rml/out.json')
+//convertRDF('./output/testProject6/rml/out.json')
 
 //console.log(jsonFile[0]["@id"]);
 module.exports = { convertRDF };
