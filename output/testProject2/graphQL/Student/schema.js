@@ -1,12 +1,10 @@
 export const type = `
   
   type Student {
-    _id: Int
+    _id: String
+    id: Int
     name: String
-    email: String
     age: Int
-    location: String
-    subjects: String
   }
 
   type StudentQueryResults {
@@ -36,41 +34,40 @@ export const type = `
   }
 
   input StudentInput {
-    _id: Int
+    _id: String
+    id: Int
     name: String
-    email: String
     age: Int
-    location: String
-    subjects: String
   }
 
   input StudentMutationInput {
+    id: Int
+    id_INC: Int
+    id_DEC: Int
     name: String
-    email: String
     age: Int
     age_INC: Int
     age_DEC: Int
-    location: String
-    subjects: String
   }
 
   input StudentSort {
     _id: Int
+    id: Int
     name: Int
-    email: Int
     age: Int
-    location: Int
-    subjects: Int
   }
 
   input StudentFilters {
-    _id_lt: Int
-    _id_lte: Int
-    _id_gt: Int
-    _id_gte: Int
-    _id: Int
-    _id_ne: Int
-    _id_in: [Int]
+    _id: String
+    _id_ne: String
+    _id_in: [String]
+    id_lt: Int
+    id_lte: Int
+    id_gt: Int
+    id_gte: Int
+    id: Int
+    id_ne: Int
+    id_in: [Int]
     name_contains: String
     name_startsWith: String
     name_endsWith: String
@@ -78,13 +75,6 @@ export const type = `
     name: String
     name_ne: String
     name_in: [String]
-    email_contains: String
-    email_startsWith: String
-    email_endsWith: String
-    email_regex: String
-    email: String
-    email_ne: String
-    email_in: [String]
     age_lt: Int
     age_lte: Int
     age_gt: Int
@@ -92,20 +82,6 @@ export const type = `
     age: Int
     age_ne: Int
     age_in: [Int]
-    location_contains: String
-    location_startsWith: String
-    location_endsWith: String
-    location_regex: String
-    location: String
-    location_ne: String
-    location_in: [String]
-    subjects_contains: String
-    subjects_startsWith: String
-    subjects_endsWith: String
-    subjects_regex: String
-    subjects: String
-    subjects_ne: String
-    subjects_in: [String]
     OR: [StudentFilters]
   }
   
@@ -119,7 +95,7 @@ export const mutation = `
   ): StudentMutationResult
 
   updateStudent (
-    _id: Int,
+    _id: String,
     Updates: StudentMutationInput
   ): StudentMutationResult
 
@@ -143,13 +119,16 @@ export const mutation = `
 export const query = `
 
   allStudents (
-    _id_lt: Int,
-    _id_lte: Int,
-    _id_gt: Int,
-    _id_gte: Int,
-    _id: Int,
-    _id_ne: Int,
-    _id_in: [Int],
+    _id: String,
+    _id_ne: String,
+    _id_in: [String],
+    id_lt: Int,
+    id_lte: Int,
+    id_gt: Int,
+    id_gte: Int,
+    id: Int,
+    id_ne: Int,
+    id_in: [Int],
     name_contains: String,
     name_startsWith: String,
     name_endsWith: String,
@@ -157,13 +136,6 @@ export const query = `
     name: String,
     name_ne: String,
     name_in: [String],
-    email_contains: String,
-    email_startsWith: String,
-    email_endsWith: String,
-    email_regex: String,
-    email: String,
-    email_ne: String,
-    email_in: [String],
     age_lt: Int,
     age_lte: Int,
     age_gt: Int,
@@ -171,20 +143,6 @@ export const query = `
     age: Int,
     age_ne: Int,
     age_in: [Int],
-    location_contains: String,
-    location_startsWith: String,
-    location_endsWith: String,
-    location_regex: String,
-    location: String,
-    location_ne: String,
-    location_in: [String],
-    subjects_contains: String,
-    subjects_startsWith: String,
-    subjects_endsWith: String,
-    subjects_regex: String,
-    subjects: String,
-    subjects_ne: String,
-    subjects_in: [String],
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

@@ -133,7 +133,7 @@ function convertRDF(input){
         if(pairFieldType.endsWith("-arrayRelation") || pairFieldType.endsWith("-objectRelation")){//campo join
           arraySplit = pairFieldType.split("-");//0-> nombre del campo de la relacion 1-> objeto con el que se relaciona 2->tipo de relacion
           if(arraySplit[2] == "arrayRelation"){
-            arrayFieldType.push(aux2 + "-IntArrayType");
+            arrayFieldType.push(aux2 + "-IntArrayType-relationship");
             arrayRelations.push(pairFieldType);
           }
           if(arraySplit[2] == "objectRelation"){//objectRelation

@@ -1,55 +1,47 @@
 [
   {
-    "_id": "2",
+    "_id": 2,
     "nombre": "David Moreno",
     "edad": 21,
+    "repetidor": false,
     "localizacion": {
-        "Direccion": {
-          "_id": "1",
+          "_id": 1,
           "calle": "calle Fake",
           "numero": 1
-        }
     },
     "email": "david@email.com",
-    "matricula": {
-      "Asignatura":
-      [
-        {
-          "_id": "2",
+    "matricula":
+      [ {
+          "_id": 2,
           "nombre": "Web semántica y Linked data",
-          "creditos": 3
-        }
-      ]
-    },
-    "repetidor": false
-  },
+          "creditos": 3,
+          "tipo": "Optativa"
+        } ]
+  }
+  ,
   {
-    "_id": "1",
+    "_id": 1,
     "nombre": "Álvaro Sainz del Nogal",
     "edad": 21,
     "email": "alvaro@email.com",
+    "repetidor": false,
     "localizacion": {
-        "Direccion": {
-          "_id": "2",
+          "_id": 2,
           "calle": "calle Fake",
           "numero": 2
-        }
     },
-    "matricula": {
-      "Asignatura":
-      [
-        {
-          "_id": "1",
+    "matricula":
+      [ {
+          "_id": 1,
           "nombre": "Inteligencia Artificial",
-          "creditos": 6
+          "creditos": 6,
+          "tipo": "Obligatoria"
         },
         {
-          "_id": "2",
+          "_id": 2,
           "nombre": "Web Semántica y Linked Data",
-          "creditos": 6
-        }
-      ]
-    },
-    "repetidor": false
+          "creditos": 3,
+          "tipo": "Optativa"
+        } ]
   }
 ]

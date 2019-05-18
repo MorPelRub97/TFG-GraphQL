@@ -1,11 +1,10 @@
 export default {
-  table: "students",
-  typeName: "Student",
+  table: "subjects",
+  typeName: "Subject",
   fields: {
     _id: "Int",
     name: "String",
-    age: "Int",
-    email: "String"
+    credits: "Int"
   },
   relationships: {
 

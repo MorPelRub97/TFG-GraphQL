@@ -14,12 +14,12 @@ rml:iterator "$.*".
 <#SUBJECTSOURCE>
 rml:source "./input/input1.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.matricula.Asignatura.*".
+rml:iterator "$.*.matricula.*".
 
 <#DIRECTIONSOURCE>
 rml:source "./input/input1.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.localizacion.Direccion".
+rml:iterator "$.*.localizacion".
 
 
 <#STUDENTmapping>
@@ -51,7 +51,7 @@ rr:predicateObjectMap [
            rr:parentTriplesMap <#DIRECTIONmapping>;
            rr:joinCondition [
             rr:child "_id" ;
-            rr:parent "^^._id";
+            rr:parent "^._id";
             ]
         ];
 ];
@@ -72,7 +72,7 @@ rr:predicateObjectMap [
            rr:parentTriplesMap <#SUBJECTmapping>;
            rr:joinCondition [
             rr:child "_id" ;
-            rr:parent "^^^._id";
+            rr:parent "^^._id";
             ]
         ];
 ].
@@ -101,8 +101,8 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:department;
-    rr:objectMap [ rml:reference "departamento" ];
+    rr:predicate schema:type;
+    rr:objectMap [ rml:reference "tipo" ];
 ].
 
 <#DIRECTIONmapping>

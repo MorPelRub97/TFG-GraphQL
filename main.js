@@ -1,9 +1,6 @@
 import { createGraphqlSchema } from "mongo-graphql-starter";
 import path from "path";
 import * as fs from "file-system";
-//import * as rmlParser from './RML-Mapper2/index.js';
-//import * as rmlParser1 from './RML-Parser/index.js'
-//import * as converter from "./JSONtoArray.js";
 import * as transformer from "./transformer.js";
 import mkdirp from "mkdirp";
 import rocketrml from "rocketrml";
@@ -20,7 +17,6 @@ let result = rocketrml.parseFile(mappingPath, './output/' + testProjectFolder + 
 catch((err) => {
     console.log(err);
 });
-
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
   var fileJSON = transformer.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
@@ -51,11 +47,21 @@ result.then(() => {
       var arraySplit = [];
       if(i == fileJSON[j].atributos.length - 1){//Ultima pos, no añadir coma
         arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
-        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + "\n";
+        if(arraySplit[2] == 'relationship'){
+          texto += "\t\t" + arraySplit[0] + "_id: " + arraySplit[1] + "\n";
+        }
+        else{
+          texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + "\n";
+        }
       }
       else{
-        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType
-        texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
+        arraySplit = fileJSON[j].atributos[i].split("-");//0-->nombre campo 1-->dataType 2-->si es una relationship
+        if(arraySplit[2] == 'relationship'){
+          texto += "\t\t" + arraySplit[0] + "_id: " + arraySplit[1] + ",\n";
+        }
+        else{
+          texto += "\t\t" + arraySplit[0] + ": " + arraySplit[1] + ",\n";
+        }
       }
     }
     if(fileJSON[j].relaciones.length == 0){//Si la tabla no tiene relaciones
@@ -73,7 +79,7 @@ result.then(() => {
               + "\t\t\tget type() {\n"
               + "\t\t\t\treturn " + arraySplit[1] + ";\n"
               + "\t\t\t},\n"
-              + "\t\t\tfkField: \"" + arraySplit[0] + "\"\n"
+              + "\t\t\tfkField: \"" + arraySplit[0] + "_id\"\n"
               + "\t\t}\n"
               + "\t}\n"
               + "};\n\n";
@@ -84,7 +90,7 @@ result.then(() => {
                 + "\t\t\tget type() {\n"
                 + "\t\t\t\treturn " + arraySplit[1] + ";\n"
                 + "\t\t\t},\n"
-                + "\t\t\tfkField: \"" + arraySplit[0] + "\"\n"
+                + "\t\t\tfkField: \"" + arraySplit[0] + "_id\"\n"
                 + "\t\t},\n";
         }
       }
@@ -102,7 +108,6 @@ result.then(() => {
 });
 }
 
-//generateOutput('/home/david/Escritorio/mapping1.ttl', 'testProject11');
-generateOutput('./input/mapping1.ttl', 'testProject6');
+generateOutput('./input/mapping1.ttl', 'testProject8');
 
 module.exports = { generateOutput };
