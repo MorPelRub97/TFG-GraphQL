@@ -6,10 +6,8 @@ export const type = `
     email: String
     age: Int
     failer: Boolean
-    location_id: [Int]
-    subjects_id: [Int]
-    location(SORT: DirectionSort, SORTS: [DirectionSort]): [Direction]
-    subjects(SORT: SubjectSort, SORTS: [SubjectSort]): [Subject]
+    location: Direction
+    subjects: [Subject]
   }
 
   type StudentQueryResults {
@@ -44,9 +42,7 @@ export const type = `
     email: String
     age: Int
     failer: Boolean
-    location_id: [Int]
-    subjects_id: [Int]
-    location: [DirectionInput]
+    location: DirectionInput
     subjects: [SubjectInput]
   }
 
@@ -57,22 +53,14 @@ export const type = `
     age_INC: Int
     age_DEC: Int
     failer: Boolean
-    location_id: [Int]
-    location_id_PUSH: Int
-    location_id_CONCAT: [Int]
-    location_id_UPDATE: IntArrayUpdate
-    location_id_UPDATES: [IntArrayUpdate]
-    location_id_PULL: [Int]
-    location_id_ADDTOSET: [Int]
-    subjects_id: [Int]
-    subjects_id_PUSH: Int
-    subjects_id_CONCAT: [Int]
-    subjects_id_UPDATE: IntArrayUpdate
-    subjects_id_UPDATES: [IntArrayUpdate]
-    subjects_id_PULL: [Int]
-    subjects_id_ADDTOSET: [Int]
-    location_ADD: [DirectionInput]
-    subjects_ADD: [SubjectInput]
+    location: DirectionInput
+    location_UPDATE: DirectionMutationInput
+    subjects: [SubjectInput]
+    subjects_PUSH: SubjectInput
+    subjects_CONCAT: [SubjectInput]
+    subjects_UPDATE: SubjectArrayMutationInput
+    subjects_UPDATES: [SubjectArrayMutationInput]
+    subjects_PULL: SubjectFilters
   }
 
   input StudentSort {
@@ -81,8 +69,8 @@ export const type = `
     email: Int
     age: Int
     failer: Int
-    location_id: Int
-    subjects_id: Int
+    location: Int
+    subjects: Int
   }
 
   input StudentFilters {
@@ -117,34 +105,10 @@ export const type = `
     failer: Boolean
     failer_ne: Boolean
     failer_in: [Boolean]
-    location_id_count: Int
-    location_id_lt: Int
-    location_id_lte: Int
-    location_id_gt: Int
-    location_id_gte: Int
-    location_id_emlt: Int
-    location_id_emlte: Int
-    location_id_emgt: Int
-    location_id_emgte: Int
-    location_id: [Int]
-    location_id_in: [[Int]]
-    location_id_contains: Int
-    location_id_containsAny: [Int]
-    location_id_ne: [Int]
-    subjects_id_count: Int
-    subjects_id_lt: Int
-    subjects_id_lte: Int
-    subjects_id_gt: Int
-    subjects_id_gte: Int
-    subjects_id_emlt: Int
-    subjects_id_emlte: Int
-    subjects_id_emgt: Int
-    subjects_id_emgte: Int
-    subjects_id: [Int]
-    subjects_id_in: [[Int]]
-    subjects_id_contains: Int
-    subjects_id_containsAny: [Int]
-    subjects_id_ne: [Int]
+    location_count: Int
+    location: DirectionFilters
+    subjects_count: Int
+    subjects: SubjectFilters
     OR: [StudentFilters]
   }
   
@@ -213,34 +177,10 @@ export const query = `
     failer: Boolean,
     failer_ne: Boolean,
     failer_in: [Boolean],
-    location_id_count: Int,
-    location_id_lt: Int,
-    location_id_lte: Int,
-    location_id_gt: Int,
-    location_id_gte: Int,
-    location_id_emlt: Int,
-    location_id_emlte: Int,
-    location_id_emgt: Int,
-    location_id_emgte: Int,
-    location_id: [Int],
-    location_id_in: [[Int]],
-    location_id_contains: Int,
-    location_id_containsAny: [Int],
-    location_id_ne: [Int],
-    subjects_id_count: Int,
-    subjects_id_lt: Int,
-    subjects_id_lte: Int,
-    subjects_id_gt: Int,
-    subjects_id_gte: Int,
-    subjects_id_emlt: Int,
-    subjects_id_emlte: Int,
-    subjects_id_emgt: Int,
-    subjects_id_emgte: Int,
-    subjects_id: [Int],
-    subjects_id_in: [[Int]],
-    subjects_id_contains: Int,
-    subjects_id_containsAny: [Int],
-    subjects_id_ne: [Int],
+    location_count: Int,
+    location: DirectionFilters,
+    subjects_count: Int,
+    subjects: SubjectFilters,
     OR: [StudentFilters],
     SORT: StudentSort,
     SORTS: [StudentSort],

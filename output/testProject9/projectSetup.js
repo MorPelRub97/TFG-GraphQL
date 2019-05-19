@@ -13,15 +13,6 @@ const {
 	objectOf,
 } = dataTypes;
 
-export const Subject = {
-	table: "subjects",
-	fields: {
-		_id: IntType,
-		name: StringType,
-		credits: IntType
-	}
-};
-
 export const Direction = {
 	table: "directions",
 	fields: {
@@ -39,6 +30,22 @@ export const Student = {
 		email: StringType,
 		age: IntType,
 		failer: BoolType,
-		subjects: arrayOf(Subject)
+		get location() {
+			return objectOf(Direction);
+		},
+		get subjects() {
+			return arrayOf(Subject);
+		}
 	}
 };
+
+export const Subject = {
+	table: "subjects",
+	fields: {
+		_id: IntType,
+		name: StringType,
+		credits: IntType,
+		type: StringType
+	}
+};
+

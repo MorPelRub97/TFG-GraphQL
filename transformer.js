@@ -1,8 +1,6 @@
 var fs = require('file-system');
 var _ = require('lodash');
 
-
-
 function isNumeric(num){//Devuelve true si es numerico
   return !isNaN(num);
 }
@@ -72,8 +70,8 @@ function cambiarArrayPorObject(array, input){//Devuelve true si
 
 function convertRDF(input){
 
-  //var file = fs.readFileSync('./output/testProject4/rml/out.json','utf8');
-  var file = fs.readFileSync(input,'utf8');
+  var file = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
+  //var file = fs.readFileSync(input,'utf8');
   var jsonFile = JSON.parse(file);
 
   var arrayObject =  [];
@@ -82,7 +80,6 @@ function convertRDF(input){
     var arrayKeys = Object.keys(jsonFile[k]);
     var arrayFieldType = [];
     var arrayAtributos = [];
-    var arrayRelations = [];
     var arraySplit = [];
     var objectAux = {};
     var arrayFieldType = [];
@@ -114,11 +111,11 @@ function convertRDF(input){
         }
         else if(Array.isArray(aux3)){//Array
           var tipo = buscarIdDevolverTipo(aux3[0]["@id"], jsonFile);
-          typeAux = tipo + "-arrayRelation";
+          typeAux = "arrayOf(" + tipo + ")-arrayRelationship";
         }
         else if(isObject(aux3)){//Objeto
           var tipo = buscarIdDevolverTipo(aux3["@id"], jsonFile);
-          typeAux = tipo + "-arrayRelation";
+          typeAux = "objectOf(" + tipo + ")-objectRelationship";
         }
         else{//String o Boolean
           if(aux3 == "true" || aux3 == "false"){
@@ -129,26 +126,11 @@ function convertRDF(input){
           }
         }
         pairFieldType = aux2 + "-" + typeAux;
-
-        if(pairFieldType.endsWith("-arrayRelation") || pairFieldType.endsWith("-objectRelation")){//campo join
-          arraySplit = pairFieldType.split("-");//0-> nombre del campo de la relacion 1-> objeto con el que se relaciona 2->tipo de relacion
-          if(arraySplit[2] == "arrayRelation"){
-            arrayFieldType.push(aux2 + "-IntArrayType-relationship");
-            arrayRelations.push(pairFieldType);
-          }
-          if(arraySplit[2] == "objectRelation"){//objectRelation
-            arrayFieldType.push(aux2 + "-IntType");
-            arrayRelations.push(pairFieldType);
-          }
-        }
-        else{//campo normal
-          arrayFieldType.push(pairFieldType);
-        }
+        arrayFieldType.push(pairFieldType);
       }
     }
     objectAux.tabla = aux1;
     objectAux.atributos = arrayFieldType;
-    objectAux.relaciones = arrayRelations;
     arrayObject.push(objectAux);
   }
 
@@ -173,7 +155,7 @@ function convertRDF(input){
   return arrayObjectResult;
 }
 
-//convertRDF('./output/testProject6/rml/out.json')
+//convertRDF('./output/testProject9/rml/out.json')
 
 //console.log(jsonFile[0]["@id"]);
 module.exports = { convertRDF };

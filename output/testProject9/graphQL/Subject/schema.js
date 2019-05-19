@@ -4,6 +4,7 @@ export const type = `
     _id: Int
     name: String
     credits: Int
+    type: String
   }
 
   type SubjectQueryResults {
@@ -36,6 +37,7 @@ export const type = `
     _id: Int
     name: String
     credits: Int
+    type: String
   }
 
   input SubjectMutationInput {
@@ -43,12 +45,19 @@ export const type = `
     credits: Int
     credits_INC: Int
     credits_DEC: Int
+    type: String
+  }
+
+  input SubjectArrayMutationInput {
+    index: Int
+    Updates: SubjectMutationInput
   }
 
   input SubjectSort {
     _id: Int
     name: Int
     credits: Int
+    type: Int
   }
 
   input SubjectFilters {
@@ -73,6 +82,13 @@ export const type = `
     credits: Int
     credits_ne: Int
     credits_in: [Int]
+    type_contains: String
+    type_startsWith: String
+    type_endsWith: String
+    type_regex: String
+    type: String
+    type_ne: String
+    type_in: [String]
     OR: [SubjectFilters]
   }
   
@@ -131,6 +147,13 @@ export const query = `
     credits: Int,
     credits_ne: Int,
     credits_in: [Int],
+    type_contains: String,
+    type_startsWith: String,
+    type_endsWith: String,
+    type_regex: String,
+    type: String,
+    type_ne: String,
+    type_in: [String],
     OR: [SubjectFilters],
     SORT: SubjectSort,
     SORTS: [SubjectSort],

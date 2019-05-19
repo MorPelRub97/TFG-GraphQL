@@ -7,12 +7,6 @@ const { getMongoProjection, parseRequestedFields } = projectUtilities;
 const { getUpdateObject, setUpOneToManyRelationshipsForUpdate } = updateUtilities;
 import { ObjectId } from "mongodb";
 import StudentMetadata from "./Student";
-import { loadDirections } from "../Direction/resolver";
-import DirectionMetadata from "../Direction/Direction";
-import flatMap from "lodash.flatmap";
-import DataLoader from "dataloader";
-import { loadSubjects } from "../Subject/resolver";
-import SubjectMetadata from "../Subject/Subject";
 
 export async function loadStudents(db, queryPacket, root, args, context, ast) {
   let { $match, $project, $sort, $limit, $skip } = queryPacket;
@@ -38,60 +32,7 @@ export async function loadStudents(db, queryPacket, root, args, context, ast) {
 }
 
 export const Student = {
-  async location(obj, args, context, ast) {
-    if (context.__Student_locationDataLoader == null) {
-      let db = await context.__mongodb;
-      context.__Student_locationDataLoader = new DataLoader(async keyArrays => {
-        let $match = { _id: { $in: flatMap(keyArrays || [], x => x) } };
-        let queryPacket = decontructGraphqlQuery(args, ast, DirectionMetadata, null);
-        let { $project, $sort, $limit, $skip } = queryPacket;
-        
-        let aggregateItems = [{ $match }, $sort ? { $sort } : null, { $project }].filter(item => item);
-        let results = await dbHelpers.runQuery(db, "directions", aggregateItems);
-        cleanUpResults(results, DirectionMetadata);
 
-        let finalResult = keyArrays.map(keyArr => []);
-        let keySets = keyArrays.map(keyArr => new Set(keyArr.map(_id => "" + _id)));
-
-        for (let result of results){
-          for (let i = 0; i < keyArrays.length; i++){
-            if (keySets[i].has(result._id + "")){
-              finalResult[i].push(result);
-            }
-          }
-        }
-        return finalResult;
-      });
-    }
-    return context.__Student_locationDataLoader.load(obj.location_id || []);
-  },
-  async subjects(obj, args, context, ast) {
-    if (context.__Student_subjectsDataLoader == null) {
-      let db = await context.__mongodb;
-      context.__Student_subjectsDataLoader = new DataLoader(async keyArrays => {
-        let $match = { _id: { $in: flatMap(keyArrays || [], x => x) } };
-        let queryPacket = decontructGraphqlQuery(args, ast, SubjectMetadata, null);
-        let { $project, $sort, $limit, $skip } = queryPacket;
-        
-        let aggregateItems = [{ $match }, $sort ? { $sort } : null, { $project }].filter(item => item);
-        let results = await dbHelpers.runQuery(db, "subjects", aggregateItems);
-        cleanUpResults(results, SubjectMetadata);
-
-        let finalResult = keyArrays.map(keyArr => []);
-        let keySets = keyArrays.map(keyArr => new Set(keyArr.map(_id => "" + _id)));
-
-        for (let result of results){
-          for (let i = 0; i < keyArrays.length; i++){
-            if (keySets[i].has(result._id + "")){
-              finalResult[i].push(result);
-            }
-          }
-        }
-        return finalResult;
-      });
-    }
-    return context.__Student_subjectsDataLoader.load(obj.subjects_id || []);
-  }
 
 }
 

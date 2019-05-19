@@ -3,12 +3,12 @@
     "_id": 2,
     "nombre": "David Moreno",
     "edad": 21,
-    "repetidor": false,
     "localizacion": {
           "_id": 1,
-          "calle": "calle Fake",
+          "calle": "calle Fake A",
           "numero": 1
-    },
+        },
+    "repetidor": false,
     "email": "david@email.com",
     "matricula":
       [ {
@@ -16,20 +16,26 @@
           "nombre": "Web semántica y Linked data",
           "creditos": 3,
           "tipo": "Optativa"
+        },
+        {
+          "_id": 3,
+          "nombre": "Trabajo de fin de grado",
+          "creditos": 12,
+          "tipo": "Básica"
         } ]
   }
   ,
   {
     "_id": 1,
     "nombre": "Álvaro Sainz del Nogal",
-    "edad": 21,
-    "email": "alvaro@email.com",
-    "repetidor": false,
+    "edad": 22,
     "localizacion": {
           "_id": 2,
-          "calle": "calle Fake",
+          "calle": "calle Fake B",
           "numero": 2
-    },
+    } ,
+    "email": "alvaro@email.com",
+    "repetidor": false,
     "matricula":
       [ {
           "_id": 1,
@@ -42,6 +48,12 @@
           "nombre": "Web Semántica y Linked Data",
           "creditos": 3,
           "tipo": "Optativa"
+        },
+        {
+          "_id": 3,
+          "nombre": "Trabajo de fin de grado",
+          "creditos": 12,
+          "tipo": "Básica"
         } ]
   }
 ]
