@@ -13,6 +13,13 @@ const {
 	objectOf,
 } = dataTypes;
 
+export const Complexity = {
+	fields: {
+		height: IntType,
+		weight: IntType
+	}
+};
+
 export const Direction = {
 	table: "directions",
 	fields: {
@@ -33,6 +40,9 @@ export const Student = {
 		get location() {
 			return objectOf(Direction);
 		},
+		get complexion() {
+			return objectOf(Complexity);
+		},
 		get subjects() {
 			return arrayOf(Subject);
 		}
@@ -48,3 +58,4 @@ export const Subject = {
 		type: StringType
 	}
 };
+

@@ -60,18 +60,11 @@ function busquedaSustituirObjectPorArray(array, input){
   return -1;
 }
 
-function cambiarArrayPorObject(array, input){//Devuelve true si
-
-  for(var k in arrayAux1){
-
-  }
-
-}
 
 function convertRDF(input){
 
-  var file = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
-  //var file = fs.readFileSync(input,'utf8');
+  //var file = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
+  var file = fs.readFileSync(input,'utf8');
   var jsonFile = JSON.parse(file);
 
   var arrayObject =  [];
@@ -155,7 +148,7 @@ function convertRDF(input){
   return arrayObjectResult;
 }
 
-//convertRDF('./output/testProject9/rml/out.json')
+//convertRDF('./output/testProject11/rml/out.json')
 
 //console.log(jsonFile[0]["@id"]);
 module.exports = { convertRDF };

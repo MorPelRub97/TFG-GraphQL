@@ -1,7 +1,7 @@
 import { createGraphqlSchema } from "mongo-graphql-starter";
 import path from "path";
 import * as fs from "file-system";
-import * as transformer2 from "./transformer2.js";
+import * as transformer from "./transformer.js";
 import mkdirp from "mkdirp";
 import rocketrml from "rocketrml";
 
@@ -19,7 +19,7 @@ catch((err) => {
 });
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
-  var fileJSON = transformer2.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
+  var fileJSON = transformer.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
   //var dataTypesObj = fileJSON[0].dataTypes;
 
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
@@ -39,8 +39,14 @@ result.then(() => {
 
   for(var j in fileJSON){
     texto += "export const " + fileJSON[j].tabla + " = {\n"
-           + "\ttable: \"" + fileJSON[j].tabla.toLowerCase() + "s\",\n"
-           + "\tfields: {\n";
+
+    if(fileJSON[j].atributos[0].split("-")[0] == "_id"){
+      texto += "\ttable: \"" + fileJSON[j].tabla.toLowerCase() + "s\",\n"
+            +  "\tfields: {\n";
+    }
+    else{
+      texto += "\tfields: {\n";
+    }
     var i;
     for(i = 0; i < fileJSON[j].atributos.length; i++){
       var arraySplit = [];
@@ -82,6 +88,6 @@ result.then(() => {
 });
 }
 
-generateOutput('./input/mapping1.ttl', 'testProject9');
+generateOutput('./input/mapping11.ttl', 'testProject11');
 
 module.exports = { generateOutput };
