@@ -113,8 +113,8 @@ rr:subjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:_id;
-    rr:objectMap [ rml:reference "_id" ];
+     rr:predicate schema:_id;
+     rr:objectMap [ rml:reference "_id" ];
 ];
 
 rr:predicateObjectMap [

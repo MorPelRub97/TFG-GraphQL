@@ -144,7 +144,7 @@ function convertRDF(input){
       }
     }
   }
-  console.log(arrayObjectResult);
+  //console.log(arrayObjectResult);
   return arrayObjectResult;
 }
 

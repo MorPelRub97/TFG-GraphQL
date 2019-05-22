@@ -5,6 +5,20 @@ import * as transformer from "./transformer.js";
 import mkdirp from "mkdirp";
 import rocketrml from "rocketrml";
 
+function deleteFolder(path) {
+  if( fs.existsSync(path) ) {
+    fs.readdirSync(path).forEach(function(file,index){
+      var curPath = path + "/" + file;
+      if(fs.lstatSync(curPath).isDirectory()) {
+        deleteFolder(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
+
 function generateOutput(mappingPath, testProjectFolder){
 
 mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/rml', function(err) {});
@@ -88,6 +102,7 @@ result.then(() => {
 });
 }
 
-generateOutput('./input/mapping11.ttl', 'testProject11');
+
+generateOutput('./input/mapping1.ttl', 'testProject1');
 
 module.exports = { generateOutput };
