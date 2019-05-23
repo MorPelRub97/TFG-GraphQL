@@ -7,10 +7,9 @@ import express from "express";
 
 const app = express();//Se lanza la app
 
-const connString = "mongodb+srv://admin:admin1234@cluster0-ya4ra.mongodb.net/test?retryWrites=true";
-
+const connString = "mongodb://localhost:27017/"
 const mongoClientPromise = MongoClient.connect(connString, { useNewUrlParser: true });
-const mongoDbPromise = mongoClientPromise.then(client => client.db("mydb"));//test es el nombre de la base de datos dentro del cluster
+const mongoDbPromise = mongoClientPromise.then(client => client.db("mydb"));//mydb es el nombre de la base de datos dentro del cluster
 
 const root = { client: mongoClientPromise, db: mongoDbPromise };
 const executableSchema = makeExecutableSchema({ typeDefs: schema, resolvers });

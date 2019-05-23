@@ -5,7 +5,7 @@ export default {
   table: "students",
   typeName: "Student",
   fields: {
-    _id: "MongoId",
+    _id: "String",
     name: "String",
     email: "String",
     age: "Int",

@@ -1,13 +1,12 @@
 export const type = `
   
   type Student {
-    _id: Int
+    _id: String
     name: String
     email: String
     age: Int
     failer: Boolean
     location: Direction
-    complexion: Complexity
     subjects: [Subject]
   }
 
@@ -38,13 +37,12 @@ export const type = `
   }
 
   input StudentInput {
-    _id: Int
+    _id: String
     name: String
     email: String
     age: Int
     failer: Boolean
     location: DirectionInput
-    complexion: ComplexityInput
     subjects: [SubjectInput]
   }
 
@@ -57,8 +55,6 @@ export const type = `
     failer: Boolean
     location: DirectionInput
     location_UPDATE: DirectionMutationInput
-    complexion: ComplexityInput
-    complexion_UPDATE: ComplexityMutationInput
     subjects: [SubjectInput]
     subjects_PUSH: SubjectInput
     subjects_CONCAT: [SubjectInput]
@@ -74,18 +70,17 @@ export const type = `
     age: Int
     failer: Int
     location: Int
-    complexion: Int
     subjects: Int
   }
 
   input StudentFilters {
-    _id_lt: Int
-    _id_lte: Int
-    _id_gt: Int
-    _id_gte: Int
-    _id: Int
-    _id_ne: Int
-    _id_in: [Int]
+    _id_contains: String
+    _id_startsWith: String
+    _id_endsWith: String
+    _id_regex: String
+    _id: String
+    _id_ne: String
+    _id_in: [String]
     name_contains: String
     name_startsWith: String
     name_endsWith: String
@@ -112,8 +107,6 @@ export const type = `
     failer_in: [Boolean]
     location_count: Int
     location: DirectionFilters
-    complexion_count: Int
-    complexion: ComplexityFilters
     subjects_count: Int
     subjects: SubjectFilters
     OR: [StudentFilters]
@@ -129,7 +122,7 @@ export const mutation = `
   ): StudentMutationResult
 
   updateStudent (
-    _id: Int,
+    _id: String,
     Updates: StudentMutationInput
   ): StudentMutationResult
 
@@ -153,13 +146,13 @@ export const mutation = `
 export const query = `
 
   allStudents (
-    _id_lt: Int,
-    _id_lte: Int,
-    _id_gt: Int,
-    _id_gte: Int,
-    _id: Int,
-    _id_ne: Int,
-    _id_in: [Int],
+    _id_contains: String,
+    _id_startsWith: String,
+    _id_endsWith: String,
+    _id_regex: String,
+    _id: String,
+    _id_ne: String,
+    _id_in: [String],
     name_contains: String,
     name_startsWith: String,
     name_endsWith: String,
@@ -186,8 +179,6 @@ export const query = `
     failer_in: [Boolean],
     location_count: Int,
     location: DirectionFilters,
-    complexion_count: Int,
-    complexion: ComplexityFilters,
     subjects_count: Int,
     subjects: SubjectFilters,
     OR: [StudentFilters],

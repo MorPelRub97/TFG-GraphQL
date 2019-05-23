@@ -1,7 +1,7 @@
 import { query as DirectionQuery, mutation as DirectionMutation, type as DirectionType } from './Direction/schema';
 import { query as StudentQuery, mutation as StudentMutation, type as StudentType } from './Student/schema';
 import { query as SubjectQuery, mutation as SubjectMutation, type as SubjectType } from './Subject/schema';
-import { type as ComplexityType } from './Complexity/schema';
+import { query as TeacherQuery, mutation as TeacherMutation, type as TeacherType } from './Teacher/schema';
     
 export default `
   scalar JSON
@@ -35,13 +35,13 @@ export default `
     value: Float
   }
 
-  ${ComplexityType}
-
   ${DirectionType}
 
   ${StudentType}
 
   ${SubjectType}
+
+  ${TeacherType}
 
   type Query {
     ${DirectionQuery}
@@ -49,6 +49,8 @@ export default `
     ${StudentQuery}
 
     ${SubjectQuery}
+
+    ${TeacherQuery}
   }
 
   type Mutation {
@@ -57,6 +59,8 @@ export default `
     ${StudentMutation}
 
     ${SubjectMutation}
+
+    ${TeacherMutation}
   }
 
 `

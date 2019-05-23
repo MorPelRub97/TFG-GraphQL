@@ -21,6 +21,11 @@ rml:source "./input/input1.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.localizacion".
 
+<#PROFESORSOURCE>
+rml:source "./input/input1.json";
+rml:referenceFormulation ql:JSONPath;
+rml:iterator "$.*.matricula.*.profesor".
+
 
 <#STUDENTmapping>
 rml:logicalSource <#STUDENTSOURCE>;
@@ -101,6 +106,17 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
+    rr:predicate schema:profesor;
+    rr:objectMap  [
+           rr:parentTriplesMap <#PROFESORmapping>;
+           rr:joinCondition [
+            rr:child "_id" ;
+            rr:parent "^._id";
+            ]
+        ];
+];
+
+rr:predicateObjectMap [
     rr:predicate schema:type;
     rr:objectMap [ rml:reference "tipo" ];
 ].
@@ -125,4 +141,21 @@ rr:predicateObjectMap [
 rr:predicateObjectMap [
     rr:predicate schema:number;
     rr:objectMap [ rml:reference "numero" ];
+].
+
+<#PROFESORmapping>
+rml:logicalSource <#PROFESORSOURCE>;
+rr:subjectMap [
+    rr:termType rr:BlankNode;
+    rr:class schema:Teacher;
+];
+
+rr:predicateObjectMap [
+     rr:predicate schema:_id;
+     rr:objectMap [ rml:reference "_id" ];
+];
+
+rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [ rml:reference "nombre" ];
 ].

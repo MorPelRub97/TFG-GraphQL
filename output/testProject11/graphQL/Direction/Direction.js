@@ -2,7 +2,7 @@ export default {
   table: "directions",
   typeName: "Direction",
   fields: {
-    _id: "Int",
+    _id: "String",
     street: "String",
     number: "Int"
   },

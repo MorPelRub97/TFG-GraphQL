@@ -52,6 +52,10 @@ export const type = `
   }
 
   input DirectionFilters {
+    _id_contains: String
+    _id_startsWith: String
+    _id_endsWith: String
+    _id_regex: String
     _id: String
     _id_ne: String
     _id_in: [String]
@@ -106,6 +110,10 @@ export const mutation = `
 export const query = `
 
   allDirections (
+    _id_contains: String,
+    _id_startsWith: String,
+    _id_endsWith: String,
+    _id_regex: String,
     _id: String,
     _id_ne: String,
     _id_in: [String],

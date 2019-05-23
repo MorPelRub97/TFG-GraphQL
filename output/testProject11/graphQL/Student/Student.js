@@ -1,12 +1,11 @@
 import Direction from "../Direction/Direction";
-import Complexity from "../Complexity/Complexity";
 import Subject from "../Subject/Subject";
 
 export default {
   table: "students",
   typeName: "Student",
   fields: {
-    _id: "Int",
+    _id: "String",
     name: "String",
     email: "String",
     age: "Int",
@@ -14,10 +13,6 @@ export default {
     location: {
       __isObject: true,
       get type(){ return Direction; }
-    },
-    complexion: {
-      __isObject: true,
-      get type(){ return Complexity; }
     },
     subjects: {
       __isArray: true,

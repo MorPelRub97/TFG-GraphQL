@@ -13,35 +13,33 @@ const {
 	objectOf,
 } = dataTypes;
 
-export const Complexity = {
-	fields: {
-		height: IntType,
-		weight: IntType
-	}
-};
-
 export const Direction = {
 	table: "directions",
 	fields: {
-		_id: IntType,
+		_id: StringType,
 		street: StringType,
 		number: IntType
+	}
+};
+
+export const Teacher = {
+	table: "teachers",
+	fields: {
+		_id: StringType,
+		name: StringType
 	}
 };
 
 export const Student = {
 	table: "students",
 	fields: {
-		_id: IntType,
+		_id: StringType,
 		name: StringType,
 		email: StringType,
 		age: IntType,
 		failer: BoolType,
 		get location() {
 			return objectOf(Direction);
-		},
-		get complexion() {
-			return objectOf(Complexity);
 		},
 		get subjects() {
 			return arrayOf(Subject);
@@ -52,10 +50,16 @@ export const Student = {
 export const Subject = {
 	table: "subjects",
 	fields: {
-		_id: IntType,
+		_id: StringType,
 		name: StringType,
 		credits: IntType,
-		type: StringType
+		type: StringType,
+		get profesor() {
+			return arrayOf(Teacher);
+		},
+		get profesor() {
+			return objectOf(Teacher);
+		}
 	}
 };
 

@@ -5,6 +5,7 @@ export const type = `
     name: String
     credits: Int
     type: String
+    profesor: Teacher
   }
 
   type SubjectQueryResults {
@@ -38,6 +39,7 @@ export const type = `
     name: String
     credits: Int
     type: String
+    profesor: TeacherInput
   }
 
   input SubjectMutationInput {
@@ -46,6 +48,8 @@ export const type = `
     credits_INC: Int
     credits_DEC: Int
     type: String
+    profesor: TeacherInput
+    profesor_UPDATE: TeacherMutationInput
   }
 
   input SubjectArrayMutationInput {
@@ -58,9 +62,14 @@ export const type = `
     name: Int
     credits: Int
     type: Int
+    profesor: Int
   }
 
   input SubjectFilters {
+    _id_contains: String
+    _id_startsWith: String
+    _id_endsWith: String
+    _id_regex: String
     _id: String
     _id_ne: String
     _id_in: [String]
@@ -85,6 +94,8 @@ export const type = `
     type: String
     type_ne: String
     type_in: [String]
+    profesor_count: Int
+    profesor: TeacherFilters
     OR: [SubjectFilters]
   }
   
@@ -122,6 +133,10 @@ export const mutation = `
 export const query = `
 
   allSubjects (
+    _id_contains: String,
+    _id_startsWith: String,
+    _id_endsWith: String,
+    _id_regex: String,
     _id: String,
     _id_ne: String,
     _id_in: [String],
@@ -146,6 +161,8 @@ export const query = `
     type: String,
     type_ne: String,
     type_in: [String],
+    profesor_count: Int,
+    profesor: TeacherFilters,
     OR: [SubjectFilters],
     SORT: SubjectSort,
     SORTS: [SubjectSort],

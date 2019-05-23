@@ -15,6 +15,10 @@
           "_id": "5ce52a481c9d44000099a993",
           "nombre": "Web semántica y Linked data",
           "creditos": 3,
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
           "tipo": "Optativa"
         },
         {
@@ -41,12 +45,20 @@
           "_id": "5ce52a5f1c9d44000099a995",
           "nombre": "Inteligencia Artificial",
           "creditos": 6,
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a998",
+            "nombre": "Oscar Corcho"
+          },
           "tipo": "Obligatoria"
         },
         {
           "_id": "5ce52a481c9d44000099a993",
           "nombre": "Web Semántica y Linked Data",
           "creditos": 3,
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
           "tipo": "Optativa"
         },
         {

@@ -103,6 +103,6 @@ result.then(() => {
 }
 
 
-generateOutput('./input/mapping1.ttl', 'testProject1');
+generateOutput('./input/mapping1.ttl', 'testProject11');
 
 module.exports = { generateOutput };

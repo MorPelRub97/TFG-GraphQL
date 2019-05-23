@@ -2,7 +2,7 @@ export default {
   table: "directions",
   typeName: "Direction",
   fields: {
-    _id: "MongoId",
+    _id: "String",
     street: "String",
     number: "Int"
   },

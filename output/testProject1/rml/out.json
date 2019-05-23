@@ -14,6 +14,24 @@
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECTIONmapping_2"
   },
   {
+    "@type": "http://schema.org/Teacher",
+    "http://schema.org/_id": "5ce5299a1c9d44000099a999",
+    "http://schema.org/name": "David Chaves",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_1"
+  },
+  {
+    "@type": "http://schema.org/Teacher",
+    "http://schema.org/_id": "5ce5299a1c9d44000099a998",
+    "http://schema.org/name": "Oscar Corcho",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_2"
+  },
+  {
+    "@type": "http://schema.org/Teacher",
+    "http://schema.org/_id": "5ce5299a1c9d44000099a999",
+    "http://schema.org/name": "David Chaves",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_3"
+  },
+  {
     "@type": "http://schema.org/Student",
     "http://schema.org/_id": "5ce5299a1c9d44000099a991",
     "http://schema.org/name": "David Moreno",
@@ -62,7 +80,15 @@
     "http://schema.org/name": "Web semántica y Linked data",
     "http://schema.org/credits": "3",
     "http://schema.org/type": "Optativa",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_1"
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_1",
+    "http://schema.org/profesor": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_3"
+      }
+    ]
   },
   {
     "@type": "http://schema.org/Subject",
@@ -78,7 +104,10 @@
     "http://schema.org/name": "Inteligencia Artificial",
     "http://schema.org/credits": "6",
     "http://schema.org/type": "Obligatoria",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_3"
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_3",
+    "http://schema.org/profesor": {
+      "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_2"
+    }
   },
   {
     "@type": "http://schema.org/Subject",
@@ -86,7 +115,15 @@
     "http://schema.org/name": "Web Semántica y Linked Data",
     "http://schema.org/credits": "3",
     "http://schema.org/type": "Optativa",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_4"
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_4",
+    "http://schema.org/profesor": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23PROFESORmapping_3"
+      }
+    ]
   },
   {
     "@type": "http://schema.org/Subject",

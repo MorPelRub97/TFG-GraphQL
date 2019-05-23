@@ -1,7 +1,7 @@
 export const type = `
   
   type Direction {
-    _id: Int
+    _id: String
     street: String
     number: Int
   }
@@ -33,7 +33,7 @@ export const type = `
   }
 
   input DirectionInput {
-    _id: Int
+    _id: String
     street: String
     number: Int
   }
@@ -52,13 +52,13 @@ export const type = `
   }
 
   input DirectionFilters {
-    _id_lt: Int
-    _id_lte: Int
-    _id_gt: Int
-    _id_gte: Int
-    _id: Int
-    _id_ne: Int
-    _id_in: [Int]
+    _id_contains: String
+    _id_startsWith: String
+    _id_endsWith: String
+    _id_regex: String
+    _id: String
+    _id_ne: String
+    _id_in: [String]
     street_contains: String
     street_startsWith: String
     street_endsWith: String
@@ -86,7 +86,7 @@ export const mutation = `
   ): DirectionMutationResult
 
   updateDirection (
-    _id: Int,
+    _id: String,
     Updates: DirectionMutationInput
   ): DirectionMutationResult
 
@@ -110,13 +110,13 @@ export const mutation = `
 export const query = `
 
   allDirections (
-    _id_lt: Int,
-    _id_lte: Int,
-    _id_gt: Int,
-    _id_gte: Int,
-    _id: Int,
-    _id_ne: Int,
-    _id_in: [Int],
+    _id_contains: String,
+    _id_startsWith: String,
+    _id_endsWith: String,
+    _id_regex: String,
+    _id: String,
+    _id_ne: String,
+    _id_in: [String],
     street_contains: String,
     street_startsWith: String,
     street_endsWith: String,

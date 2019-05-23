@@ -16,16 +16,24 @@ const {
 export const Direction = {
 	table: "directions",
 	fields: {
-		_id: MongoIdType,
+		_id: StringType,
 		street: StringType,
 		number: IntType
+	}
+};
+
+export const Teacher = {
+	table: "teachers",
+	fields: {
+		_id: StringType,
+		name: StringType
 	}
 };
 
 export const Student = {
 	table: "students",
 	fields: {
-		_id: MongoIdType,
+		_id: StringType,
 		name: StringType,
 		email: StringType,
 		age: IntType,
@@ -42,10 +50,16 @@ export const Student = {
 export const Subject = {
 	table: "subjects",
 	fields: {
-		_id: MongoIdType,
+		_id: StringType,
 		name: StringType,
 		credits: IntType,
-		type: StringType
+		type: StringType,
+		get profesor() {
+			return arrayOf(Teacher);
+		},
+		get profesor() {
+			return objectOf(Teacher);
+		}
 	}
 };
 
