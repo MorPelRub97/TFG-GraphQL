@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "_id",
+    "nombre": "String",
+    "edad": "Int",
+    "localizacion": {
+          "_id": "_id",
+          "calle": "String",
+          "numero": "Int"
+        },
+    "repetidor": "Boolean",
+    "email": "String",
+    "matricula":
+      [ {
+          "_id": "_id",
+          "nombre": "String",
+          "creditos": "Int",
+          "profesor":{
+            "_id": "_id",
+            "nombre": "String"
+          },
+          "tipo": "String"
+        } ]
+  }
+]

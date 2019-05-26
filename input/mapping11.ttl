@@ -9,22 +9,12 @@
 <#STUDENTSOURCE>
 rml:source "./input/input11.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*".
+rml:iterator "$.*.Estudiantes.*".
 
 <#SUBJECTSOURCE>
 rml:source "./input/input11.json";
 rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.matricula.*".
-
-<#DIRECTIONSOURCE>
-rml:source "./input/input11.json";
-rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.localizacion".
-
-<#COMPLEXITYSOURCE>
-rml:source "./input/input11.json";
-rml:referenceFormulation ql:JSONPath;
-rml:iterator "$.*.complexion".
+rml:iterator "$.*.Asignaturas.*".
 
 
 <#STUDENTmapping>
@@ -51,28 +41,17 @@ rr:predicateObjectMap [
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:location;
-    rr:objectMap  [
-           rr:parentTriplesMap <#DIRECTIONmapping>;
-           rr:joinCondition [
-            rr:child "_id" ;
-            rr:parent "^._id";
-            ]
-        ];
-];
-
-rr:predicateObjectMap [
     rr:predicate schema:age;
     rr:objectMap [ rml:reference "edad" ];
 ];
 
 rr:predicateObjectMap [
-    rr:predicate schema:complexion;
+    rr:predicate schema:Subject_ids;
     rr:objectMap  [
-           rr:parentTriplesMap <#COMPLEXITYmapping>;
+           rr:parentTriplesMap <#SUBJECTmapping>;
            rr:joinCondition [
-            rr:child "_id" ;
-            rr:parent "^._id";
+            rr:child  "_id";
+            rr:parent "_id";
             ]
         ];
 ];
@@ -80,17 +59,6 @@ rr:predicateObjectMap [
 rr:predicateObjectMap [
     rr:predicate schema:failer;
     rr:objectMap [ rml:reference "repetidor" ];
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:subjects;
-    rr:objectMap  [
-           rr:parentTriplesMap <#SUBJECTmapping>;
-           rr:joinCondition [
-            rr:child "_id" ;
-            rr:parent "^^._id";
-            ]
-        ];
 ].
 
 <#SUBJECTmapping>
@@ -114,48 +82,4 @@ rr:predicateObjectMap [
 rr:predicateObjectMap [
     rr:predicate schema:credits;
     rr:objectMap [ rml:reference "creditos" ];
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:type;
-    rr:objectMap [ rml:reference "tipo" ];
-].
-
-<#DIRECTIONmapping>
-rml:logicalSource <#DIRECTIONSOURCE>;
-rr:subjectMap [
-    rr:termType rr:BlankNode;
-    rr:class schema:Direction;
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:_id;
-    rr:objectMap [ rml:reference "_id" ];
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:street;
-    rr:objectMap [ rml:reference "calle" ];
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:number;
-    rr:objectMap [ rml:reference "numero" ];
-].
-
-<#COMPLEXITYmapping>
-rml:logicalSource <#COMPLEXITYSOURCE>;
-rr:subjectMap [
-    rr:termType rr:BlankNode;
-    rr:class schema:Complexity;
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:height;
-    rr:objectMap [ rml:reference "altura" ];
-];
-
-rr:predicateObjectMap [
-    rr:predicate schema:weight;
-    rr:objectMap [ rml:reference "peso" ];
 ].

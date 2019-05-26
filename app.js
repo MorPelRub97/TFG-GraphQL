@@ -7,8 +7,6 @@ import archiver from "archiver";
 import { createGraphqlSchema } from "mongo-graphql-starter";
 import path from "path";
 import * as fs from "file-system";
-//import * as rmlParser from "./RML-Mapper2/index.js";
-//import * as converter from "./JSONtoArray.js";
 import rocketrml from "rocketrml";
 import * as transformer from "./transformer.js";
 import mkdirp from "mkdirp";
@@ -34,8 +32,8 @@ app.post('/transform', function (req, res) {
 
   if(req.body.db_url && req.body.db_name && req.body.mapping_path && req.body.output_folder && req.body.port_no){
 
-      generateOutput(req.body.mapping_path, req.body.output_folder);
-      generateServer(req.body.db_url, req.body.db_name, req.body.port_no, req.body.output_folder);
+      generateProjectSetup(req.body.mapping_path, req.body.output_folder);
+      generateGraphQLServer(req.body.db_url, req.body.db_name, req.body.port_no, req.body.output_folder);
 			res.redirect('/');
 
 		} else {
@@ -59,7 +57,7 @@ function deleteFolder(path) {
 
 //deleteFolder('./output/' + testProjectFolder);
 
-function generateOutput(mappingPath, testProjectFolder){
+function generateProjectSetup(mappingPath, testProjectFolder){
 
 deleteFolder('./output/' + testProjectFolder);
 
@@ -75,7 +73,7 @@ catch((err) => {
 });
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
-  var fileJSON = transformer.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
+  var fileJSON = transformer.interpretarJSON('./output/' + testProjectFolder + '/rml/out.json');
   //var dataTypesObj = fileJSON[0].dataTypes;
 
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
@@ -155,7 +153,7 @@ result.then(() => {
 }
 
 
-function generateServer(dbUrl, dbName, portNumber, testProjectFolder){
+function generateGraphQLServer(dbUrl, dbName, portNumber, testProjectFolder){
   var texto = "import { MongoClient } from \"mongodb\";\n"
             + "import expressGraphql from \"express-graphql\";\n"
             + "import resolvers from \"./graphQL/resolver.js\";\n"

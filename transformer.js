@@ -61,7 +61,7 @@ function busquedaSustituirObjectPorArray(array, input){
 }
 
 
-function convertRDF(input){
+function interpretarJSON(input){
 
   //var file = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
   var file = fs.readFileSync(input,'utf8');
@@ -103,8 +103,21 @@ function convertRDF(input){
           }
         }
         else if(Array.isArray(aux3)){//Array
+          if(isNumeric(aux3[0])){
+            if(isInt(aux3[0])){
+              typeAux = "IntArrayType";
+            }
+            else{
+              typeAux = "FloatArrayType";
+            }
+          }
+          else if(typeof aux3[0] === 'string'){
+            typeAux = "StringArrayType)";
+          }
+          else{//Es una relationship
           var tipo = buscarIdDevolverTipo(aux3[0]["@id"], jsonFile);
           typeAux = "arrayOf(" + tipo + ")-arrayRelationship";
+          }
         }
         else if(isObject(aux3)){//Objeto
           var tipo = buscarIdDevolverTipo(aux3["@id"], jsonFile);
@@ -144,11 +157,11 @@ function convertRDF(input){
       }
     }
   }
-  //console.log(arrayObjectResult);
+  console.log(arrayObjectResult);
   return arrayObjectResult;
 }
 
 //convertRDF('./output/testProject11/rml/out.json')
 
 //console.log(jsonFile[0]["@id"]);
-module.exports = { convertRDF };
+module.exports = { interpretarJSON };

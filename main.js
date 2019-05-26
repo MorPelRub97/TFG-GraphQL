@@ -19,7 +19,7 @@ function deleteFolder(path) {
   }
 };
 
-function generateOutput(mappingPath, testProjectFolder){
+function generateProjectSetup(mappingPath, testProjectFolder){
 
 mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/rml', function(err) {});
 
@@ -33,7 +33,7 @@ catch((err) => {
 });
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
-  var fileJSON = transformer.convertRDF('./output/' + testProjectFolder + '/rml/out.json');
+  var fileJSON = transformer.interpretarJSON('./output/' + testProjectFolder + '/rml/out.json');
   //var dataTypesObj = fileJSON[0].dataTypes;
 
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
@@ -103,6 +103,6 @@ result.then(() => {
 }
 
 
-generateOutput('./input/mapping1.ttl', 'testProject11');
+generateProjectSetup('./input/mapping21.ttl', 'testProject21');
 
-module.exports = { generateOutput };
+module.exports = { generateProjectSetup};
