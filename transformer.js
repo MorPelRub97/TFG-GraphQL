@@ -33,7 +33,7 @@ function existePos(tabla, arrObj){
   return -1;
 }
 
-function buscarIdDevolverTipo(idBuscado,input){
+function buscarIdDevolverType(idBuscado,input){
   var arrayAux = [];
   var aux;
   for (var k in input){
@@ -115,12 +115,12 @@ function interpretarJSON(input){
             typeAux = "StringArrayType)";
           }
           else{//Es una relationship
-          var tipo = buscarIdDevolverTipo(aux3[0]["@id"], jsonFile);
+          var tipo = buscarIdDevolverType(aux3[0]["@id"], jsonFile);
           typeAux = "arrayOf(" + tipo + ")-arrayRelationship";
           }
         }
         else if(isObject(aux3)){//Objeto
-          var tipo = buscarIdDevolverTipo(aux3["@id"], jsonFile);
+          var tipo = buscarIdDevolverType(aux3["@id"], jsonFile);
           typeAux = "objectOf(" + tipo + ")-objectRelationship";
         }
         else{//String o Boolean

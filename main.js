@@ -103,6 +103,6 @@ result.then(() => {
 }
 
 
-generateProjectSetup('./input/mapping21.ttl', 'testProject21');
+generateProjectSetup('./input/mapping1.ttl', 'testProjectUniversidad');
 
 module.exports = { generateProjectSetup};

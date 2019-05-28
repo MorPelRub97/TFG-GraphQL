@@ -32,8 +32,8 @@ app.post('/transform', function (req, res) {
 
   if(req.body.db_url && req.body.db_name && req.body.mapping_path && req.body.output_folder && req.body.port_no){
 
-      generateProjectSetup(req.body.mapping_path, req.body.output_folder);
-      generateGraphQLServer(req.body.db_url, req.body.db_name, req.body.port_no, req.body.output_folder);
+      generateGraphQLapi(req.body.mapping_path, req.body.output_folder);
+      generateGraphQLserver(req.body.db_url, req.body.db_name, req.body.port_no, req.body.output_folder);
 			res.redirect('/');
 
 		} else {
@@ -57,7 +57,7 @@ function deleteFolder(path) {
 
 //deleteFolder('./output/' + testProjectFolder);
 
-function generateProjectSetup(mappingPath, testProjectFolder){
+function generateGraphQLapi(mappingPath, testProjectFolder){
 
 deleteFolder('./output/' + testProjectFolder);
 
@@ -74,7 +74,6 @@ catch((err) => {
 /*El parseo del mapping ha ido bien*/
 result.then(() => {
   var fileJSON = transformer.interpretarJSON('./output/' + testProjectFolder + '/rml/out.json');
-  //var dataTypesObj = fileJSON[0].dataTypes;
 
   var texto = "import { dataTypes } from \"mongo-graphql-starter\";\n"
             + "const {\n"
@@ -152,8 +151,7 @@ result.then(() => {
 });
 }
 
-
-function generateGraphQLServer(dbUrl, dbName, portNumber, testProjectFolder){
+function generateGraphQLserver(dbUrl, dbName, portNumber, testProjectFolder){
   var texto = "import { MongoClient } from \"mongodb\";\n"
             + "import expressGraphql from \"express-graphql\";\n"
             + "import resolvers from \"./graphQL/resolver.js\";\n"

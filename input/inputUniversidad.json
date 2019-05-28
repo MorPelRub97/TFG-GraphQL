@@ -1,0 +1,146 @@
+[
+  {
+    "_id": "5ce5299a1c9d44000099a991",
+    "nombre": "David Moreno Fernández",
+    "email": "david@email.com",
+    "edad": 21,
+    "repetidor": false,
+    "grado": "GII",
+    "localizacion": {
+          "_id": "5ce528901c9d4400001e2d7b",
+          "calle": "calle Fake A",
+          "numero": 1
+        },
+    "matricula":
+      [ {
+          "_id": "5ce52a481c9d44000099a993",
+          "nombre": "Web semántica y Linked data",
+          "creditos": 3,
+          "tipo": "Optativa",
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
+          "departamento": {
+            "_id": "5cece6199828a61d37b08df9",
+            "nombre": "Departamento de Inteligencia Artificial",
+            "edificio": 2
+          }
+        },
+        {
+          "_id": "5ce52a3d1c9d44000099a992",
+          "nombre": "Trabajo de fin de grado",
+          "creditos": 12,
+          "tipo": "Básica"
+        } ]
+  }
+  ,
+  {
+    "_id": "5ce556f61c9d440000816847",
+    "nombre": "Álvaro Sainz del Nogal",
+    "email": "alvaro@email.com",
+    "edad": 22,
+    "repetidor": false,
+    "grado": "GII",
+    "localizacion": {
+          "_id": "5ce528d41c9d440000816846",
+          "calle": "calle Fake B",
+          "numero": 2
+    },
+    "matricula":
+      [ {
+          "_id": "5ce52a5f1c9d44000099a995",
+          "nombre": "Inteligencia Artificial",
+          "creditos": 6,
+          "tipo": "Obligatoria",
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a998",
+            "nombre": "Freddy Priyatna"
+          },
+          "departamento": {
+            "_id": "5cece6199828a61d37b08df9",
+            "nombre": "Departamento de Inteligencia Artificial",
+            "edificio": 2
+          }
+        },
+        {
+          "_id": "5ce52a481c9d44000099a993",
+          "nombre": "Web Semántica y Linked Data",
+          "creditos": 3,
+          "tipo": "Optativa",
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
+          "departamento": {
+            "_id": "5cece6199828a61d37b08df9",
+            "nombre": "Departamento de Inteligencia Artificial",
+            "edificio": 2
+          }
+        },
+        {
+          "_id": "5ce52a3d1c9d44000099a992",
+          "nombre": "Trabajo de fin de grado",
+          "creditos": 12,
+          "tipo": "Básica"
+        } ]
+  },
+  {
+    "_id": "5ced1b899828a61d37b08e03",
+    "nombre": "Rafael Inés Guillén",
+    "email": "rafael@email.com",
+    "edad": 23,
+    "repetidor": false,
+    "grado": "GMI",
+    "localizacion": {
+          "_id": "5ced1dec9828a61d37b08e05",
+          "calle": "calle Fake C",
+          "numero": 13
+    },
+    "matricula":
+      [ {
+          "_id": "5ce52a5f1c9",
+          "nombre": "Sistemas dinámicos, caos y fractales",
+          "creditos": 6,
+          "tipo": "Optativa",
+          "profesor":{
+            "_id": "5ce5299a1",
+            "nombre": "Miguel Reyes"
+          },
+          "departamento": {
+            "_id": "5cece6199828",
+            "nombre": "Departamento de Matemática Aplicada",
+            "edificio": 1
+          }
+        }]
+  },
+  {
+    "_id": "5ced1bf09828a61d37b08e04",
+    "nombre": "Juan González Martínez",
+    "email": "juanG@email.com",
+    "edad": 23,
+    "repetidor": true,
+    "grado": "GII",
+    "localizacion": {
+          "_id": "5ced1f949828a61d37b08e06",
+          "calle": "calle Fake D",
+          "numero": 5
+    },
+    "matricula":
+      [ {
+          "_id": "5ce52a5f1",
+          "nombre": "Arquitectura de computadores",
+          "creditos": 6,
+          "tipo": "Obligatoria",
+          "profesor":{
+            "_id": "5ce5299a1c9",
+            "nombre": "Santiago Rodríguez"
+          },
+          "departamento": {
+            "_id": "5cece6199828",
+            "nombre": "DATSI",
+            "edificio": 3
+          }
+        }]
+  }
+]
