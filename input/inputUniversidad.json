@@ -99,16 +99,16 @@
     },
     "matricula":
       [ {
-          "_id": "5ce52a5f1c9",
+          "_id": "5ced9692affcc509fda52473",
           "nombre": "Sistemas dinámicos, caos y fractales",
           "creditos": 6,
           "tipo": "Optativa",
           "profesor":{
-            "_id": "5ce5299a1",
+            "_id": "5ced9709affcc509fda52474",
             "nombre": "Miguel Reyes"
           },
           "departamento": {
-            "_id": "5cece6199828",
+            "_id": "5ced975eaffcc509fda52475",
             "nombre": "Departamento de Matemática Aplicada",
             "edificio": 1
           }
@@ -128,16 +128,16 @@
     },
     "matricula":
       [ {
-          "_id": "5ce52a5f1",
+          "_id": "5ced97fcaffcc509fda52476",
           "nombre": "Arquitectura de computadores",
           "creditos": 6,
           "tipo": "Obligatoria",
           "profesor":{
-            "_id": "5ce5299a1c9",
+            "_id": "5ced9917affcc509fda52477",
             "nombre": "Santiago Rodríguez"
           },
           "departamento": {
-            "_id": "5cece6199828",
+            "_id": "5ced9973affcc509fda52479",
             "nombre": "DATSI",
             "edificio": 3
           }
