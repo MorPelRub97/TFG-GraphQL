@@ -145,7 +145,7 @@ result.then(() => {
   /*El projectSetup se ha creado, llamamos a mongo-graphql-starter para crear los resolvers*/
   import('./output/' + testProjectFolder + '/projectSetup.js').then((ProjectSetup) => {
        createGraphqlSchema(ProjectSetup, path.resolve("./output/" + testProjectFolder)).then(() => {
-         console.log('GraphQL resolvers generados con éxito');
+         console.log('API GraphQL para ' + testProjectFolder + ' generada con éxito');
        });
   });
 });

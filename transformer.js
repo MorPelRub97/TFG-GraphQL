@@ -63,7 +63,6 @@ function busquedaSustituirObjectPorArray(array, input){
 
 function interpretarJSON(input){
 
-  //var file = fs.readFileSync('./output/testProject9/rml/out.json','utf8');
   var file = fs.readFileSync(input,'utf8');
   var jsonFile = JSON.parse(file);
 
@@ -132,7 +131,11 @@ function interpretarJSON(input){
           }
         }
         pairFieldType = aux2 + "-" + typeAux;
-        arrayFieldType.push(pairFieldType);
+        if(arrayFieldType.includes(aux2 + "-arrayOf(" + tipo + ")-arrayRelationship") && pairFieldType.endsWith("objectRelationship")){
+        }
+        else{
+          arrayFieldType.push(pairFieldType);
+        }
       }
     }
     objectAux.tabla = aux1;
@@ -161,7 +164,4 @@ function interpretarJSON(input){
   return arrayObjectResult;
 }
 
-//convertRDF('./output/testProject11/rml/out.json')
-
-//console.log(jsonFile[0]["@id"]);
 module.exports = { interpretarJSON };
