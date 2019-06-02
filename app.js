@@ -61,7 +61,7 @@ function generateGraphQLapi(mappingPath, testProjectFolder){
 
 deleteFolder('./output/' + testProjectFolder);
 
-mkdirp('/home/david/Escritorio/TFG-GraphQL/output/' + testProjectFolder + '/rml', function(err) {});
+mkdirp('./output/' + testProjectFolder + '/rml', function(err) {});
 
 let options={
 };

@@ -22,17 +22,31 @@
   },
   {
     "@type": "http://schema.org/Department",
-    "http://schema.org/_id": "5cece6199828",
+    "http://schema.org/_id": "5ced975eaffcc509fda52475",
     "http://schema.org/name": "Departamento de Matemática Aplicada",
     "http://schema.org/building": "1",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_4"
   },
   {
     "@type": "http://schema.org/Department",
-    "http://schema.org/_id": "5cece6199828",
+    "http://schema.org/_id": "5cece6199828a61d37b08df9",
+    "http://schema.org/name": "Departamento de Inteligencia Artificial",
+    "http://schema.org/building": "2",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+  },
+  {
+    "@type": "http://schema.org/Department",
+    "http://schema.org/_id": "5ced9973affcc509fda52479",
     "http://schema.org/name": "DATSI",
     "http://schema.org/building": "3",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_6"
+  },
+  {
+    "@type": "http://schema.org/Department",
+    "http://schema.org/_id": "5cece6199828a61d37b08df9",
+    "http://schema.org/name": "Departamento de Inteligencia Artificial",
+    "http://schema.org/building": "2",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_7"
   },
   {
     "@type": "http://schema.org/Direction",
@@ -50,21 +64,21 @@
   },
   {
     "@type": "http://schema.org/Direction",
-    "http://schema.org/_id": "5ce528d41c9",
+    "http://schema.org/_id": "5ced1dec9828a61d37b08e05",
     "http://schema.org/street": "calle Fake C",
     "http://schema.org/number": "13",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECTIONmapping_3"
   },
   {
     "@type": "http://schema.org/Direction",
-    "http://schema.org/_id": "5ce528d41c9",
+    "http://schema.org/_id": "5ced1f949828a61d37b08e06",
     "http://schema.org/street": "calle Fake D",
     "http://schema.org/number": "5",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECTIONmapping_4"
   },
   {
     "@type": "http://schema.org/Student",
-    "http://schema.org/_id": "5ce5299a1c9d44000099a991",
+    "http://schema.org/_id": "5ce6d9ca8b99040b8753efda",
     "http://schema.org/name": "David Moreno Fernández",
     "http://schema.org/email": "david@email.com",
     "http://schema.org/age": "21",
@@ -109,23 +123,28 @@
   },
   {
     "@type": "http://schema.org/Student",
-    "http://schema.org/_id": "5ce556f61c9",
+    "http://schema.org/_id": "5ced1b899828a61d37b08e03",
     "http://schema.org/name": "Rafael Inés Guillén",
     "http://schema.org/email": "rafael@email.com",
-    "http://schema.org/age": "22",
+    "http://schema.org/age": "23",
     "http://schema.org/failer": "false",
     "http://schema.org/degree": "GMI",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23STUDENTmapping_3",
     "http://schema.org/location": {
       "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECTIONmapping_3"
     },
-    "http://schema.org/subjects": {
-      "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_6"
-    }
+    "http://schema.org/subjects": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_6"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_7"
+      }
+    ]
   },
   {
     "@type": "http://schema.org/Student",
-    "http://schema.org/_id": "5ce556f61c9d",
+    "http://schema.org/_id": "5ced1bf09828a61d37b08e04",
     "http://schema.org/name": "Juan González Martínez",
     "http://schema.org/email": "juanG@email.com",
     "http://schema.org/age": "23",
@@ -135,9 +154,14 @@
     "http://schema.org/location": {
       "@id": "_:http%3A%2F%2Fsti2.at%2F%23DIRECTIONmapping_4"
     },
-    "http://schema.org/subjects": {
-      "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_7"
-    }
+    "http://schema.org/subjects": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_8"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_9"
+      }
+    ]
   },
   {
     "@type": "http://schema.org/Subject",
@@ -152,6 +176,12 @@
       },
       {
         "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_7"
       }
     ],
     "http://schema.org/teacher": [
@@ -160,6 +190,12 @@
       },
       {
         "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_7"
       }
     ]
   },
@@ -198,6 +234,12 @@
       },
       {
         "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_7"
       }
     ],
     "http://schema.org/teacher": [
@@ -206,6 +248,12 @@
       },
       {
         "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_7"
       }
     ]
   },
@@ -219,7 +267,7 @@
   },
   {
     "@type": "http://schema.org/Subject",
-    "http://schema.org/_id": "5ce52a5f1c9",
+    "http://schema.org/_id": "5ced9692affcc509fda52473",
     "http://schema.org/name": "Sistemas dinámicos, caos y fractales",
     "http://schema.org/credits": "6",
     "http://schema.org/type": "Optativa",
@@ -233,17 +281,89 @@
   },
   {
     "@type": "http://schema.org/Subject",
-    "http://schema.org/_id": "5ce52a5f1",
+    "http://schema.org/_id": "5ce52a481c9d44000099a993",
+    "http://schema.org/name": "Web Semántica y Linked Data",
+    "http://schema.org/credits": "3",
+    "http://schema.org/type": "Optativa",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_7",
+    "http://schema.org/department": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_7"
+      }
+    ],
+    "http://schema.org/teacher": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_7"
+      }
+    ]
+  },
+  {
+    "@type": "http://schema.org/Subject",
+    "http://schema.org/_id": "5ced97fcaffcc509fda52476",
     "http://schema.org/name": "Arquitectura de computadores",
     "http://schema.org/credits": "6",
     "http://schema.org/type": "Obligatoria",
-    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_7",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_8",
     "http://schema.org/department": {
-      "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+      "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_6"
     },
     "http://schema.org/teacher": {
-      "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+      "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_6"
     }
+  },
+  {
+    "@type": "http://schema.org/Subject",
+    "http://schema.org/_id": "5ce52a481c9d44000099a993",
+    "http://schema.org/name": "Web Semántica y Linked Data",
+    "http://schema.org/credits": "3",
+    "http://schema.org/type": "Optativa",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23SUBJECTmapping_9",
+    "http://schema.org/department": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23DEPARTMENTmapping_7"
+      }
+    ],
+    "http://schema.org/teacher": [
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_1"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_3"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+      },
+      {
+        "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_7"
+      }
+    ]
   },
   {
     "@type": "http://schema.org/Teacher",
@@ -265,14 +385,26 @@
   },
   {
     "@type": "http://schema.org/Teacher",
-    "http://schema.org/_id": "5ce5299a1",
+    "http://schema.org/_id": "5ced9709affcc509fda52474",
     "http://schema.org/name": "Miguel Reyes",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_4"
   },
   {
     "@type": "http://schema.org/Teacher",
-    "http://schema.org/_id": "5ce5299a1c9",
-    "http://schema.org/name": "Santiago Rodríguez",
+    "http://schema.org/_id": "5ce5299a1c9d44000099a999",
+    "http://schema.org/name": "David Chaves",
     "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_5"
+  },
+  {
+    "@type": "http://schema.org/Teacher",
+    "http://schema.org/_id": "5ced9917affcc509fda52477",
+    "http://schema.org/name": "Santiago Rodríguez",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_6"
+  },
+  {
+    "@type": "http://schema.org/Teacher",
+    "http://schema.org/_id": "5ce5299a1c9d44000099a999",
+    "http://schema.org/name": "David Chaves",
+    "@id": "_:http%3A%2F%2Fsti2.at%2F%23TEACHERmapping_7"
   }
 ]

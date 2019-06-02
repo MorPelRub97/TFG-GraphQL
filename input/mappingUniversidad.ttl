@@ -7,27 +7,27 @@
 @base <http://sti2.at/> . #the base for the classes
 
 <#STUDENTSOURCE>
-rml:source "./input/input1.json";
+rml:source "../Universidad.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*".
 
 <#SUBJECTSOURCE>
-rml:source "./input/input1.json";
+rml:source "../Universidad.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.matricula.*".
 
 <#DIRECTIONSOURCE>
-rml:source "./input/input1.json";
+rml:source "../Universidad.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.localizacion".
 
 <#TEACHERSOURCE>
-rml:source "./input/input1.json";
+rml:source "../Universidad.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.matricula.*.profesor".
 
 <#DEPARTMENTSOURCE>
-rml:source "./input/input1.json";
+rml:source "../Universidad.json";
 rml:referenceFormulation ql:JSONPath;
 rml:iterator "$.*.matricula.*.departamento".
 

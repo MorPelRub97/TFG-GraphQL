@@ -1,6 +1,6 @@
 [
   {
-    "_id": "5ce5299a1c9d44000099a991",
+    "_id": "5ce6d9ca8b99040b8753efda",
     "nombre": "David Moreno Fernández",
     "email": "david@email.com",
     "edad": 21,
@@ -14,7 +14,7 @@
     "matricula":
       [ {
           "_id": "5ce52a481c9d44000099a993",
-          "nombre": "Web semántica y Linked Data",
+          "nombre": "Web semántica y Linked data",
           "creditos": 3,
           "tipo": "Optativa",
           "profesor":{
@@ -82,11 +82,7 @@
           "_id": "5ce52a3d1c9d44000099a992",
           "nombre": "Trabajo de fin de grado",
           "creditos": 12,
-          "tipo": "Básica",
-          "profesor":{
-            "_id": "5ced01d19828a61d37b08dff",
-            "nombre": "Óscar Corcho"
-          }
+          "tipo": "Básica"
         } ]
   },
   {
@@ -115,6 +111,21 @@
             "_id": "5ced975eaffcc509fda52475",
             "nombre": "Departamento de Matemática Aplicada",
             "edificio": 1
+          }
+        },
+	{
+          "_id": "5ce52a481c9d44000099a993",
+          "nombre": "Web Semántica y Linked Data",
+          "creditos": 3,
+          "tipo": "Optativa",
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
+          "departamento": {
+            "_id": "5cece6199828a61d37b08df9",
+            "nombre": "Departamento de Inteligencia Artificial",
+            "edificio": 2
           }
         }]
   },
@@ -145,6 +156,22 @@
             "nombre": "DATSI",
             "edificio": 3
           }
+        },
+	{
+          "_id": "5ce52a481c9d44000099a993",
+          "nombre": "Web Semántica y Linked Data",
+          "creditos": 3,
+          "tipo": "Optativa",
+          "profesor":{
+            "_id": "5ce5299a1c9d44000099a999",
+            "nombre": "David Chaves"
+          },
+          "departamento": {
+            "_id": "5cece6199828a61d37b08df9",
+            "nombre": "Departamento de Inteligencia Artificial",
+            "edificio": 2
+          }
         }]
   }
 ]
+
