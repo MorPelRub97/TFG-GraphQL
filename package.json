@@ -20,7 +20,7 @@
     "graphql": "^14.1.1",
     "graphql-tools": "^4.0.4",
     "html2plaintext": "^2.1.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonld": "^1.5.4",
     "jsonpath-plus": "^0.18.0",
     "jszip": "^3.2.1",
