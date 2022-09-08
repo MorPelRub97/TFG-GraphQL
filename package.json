@@ -23,7 +23,7 @@
     "jquery": "^3.4.1",
     "jsonld": "^1.5.4",
     "jsonpath-plus": "^0.18.0",
-    "jszip": "^3.2.1",
+    "jszip": "^3.7.0",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "mongo-graphql-starter": "^0.9.2",
